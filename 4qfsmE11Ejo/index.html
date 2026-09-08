@@ -1,0 +1,202 @@
+<!doctype html><meta charset="utf-8">
+<article>
+<h1>Modular Monoliths and Other Facepalms - Kevlin Henney - NDC London 2026</h1>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/4qfsmE11Ejo/cover.png" alt="Cover illustration"><figcaption>Cover illustration</figcaption></figure>
+<h2>The Monolith Paradox</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/4qfsmE11Ejo/section-01.png" alt="Illustration: The Monolith Paradox"><figcaption>Illustration: The Monolith Paradox</figcaption></figure>
+<p>The speaker opens with a humorous anecdote about visiting Stonehenge on Valentine&#x27;s Day in 2017. The photo was staged to appear empty, though the site was actually crowded with visitors taking selfies.</p>
+<ul>
+<li>Stonehenge visit: February 14, 2017, with family on Valentine&#x27;s Day.
+Actual site was crowded with visitors taking selfies.</li>
+<li>The term &quot;monolith&quot; is misunderstood in software development.
+Architectural naming causes confusion about design principles.</li>
+<li>Modular monoliths represent a return to better design practices.
+They are not a new concept but a reapplication of established principles.</li>
+</ul>
+<h2>Generational Knowledge Gap</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/4qfsmE11Ejo/section-02.png" alt="Illustration: Generational Knowledge Gap"><figcaption>Illustration: Generational Knowledge Gap</figcaption></figure>
+<p>The speaker discusses a growing knowledge gap in software development. Over half of current developers started after the pandemic, creating a disconnect with established practices. Software development is an older profession than commonly believed.</p>
+<ul>
+<li>Over 50% of developers began after 2020.
+This creates a significant knowledge gap in the field.</li>
+<li>Software development predates many current roles and technologies.
+It&#x27;s older than most people realize.</li>
+<li>The speaker warns against dismissing past knowledge.
+New approaches build on established principles, not replace them.</li>
+</ul>
+<h2>Microservices Misconceptions</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/4qfsmE11Ejo/section-03.png" alt="Illustration: Microservices Misconceptions"><figcaption>Illustration: Microservices Misconceptions</figcaption></figure>
+<p>The talk highlights a common misconception: that microservices solve all architectural problems. Developers often treat microservices as a &quot;get out of jail free card&quot; for avoiding fundamental design work like understanding boundaries between concepts.</p>
+<ul>
+<li>Microservices are treated as a &quot;get out of jail free card.&quot;
+This leads to avoiding fundamental design work.</li>
+<li>Understanding boundaries and organization is fundamental.
+This applies to all architectures, not just microservices.</li>
+<li>Some developers have never worked outside microservices.
+This limits their understanding of design principles.</li>
+</ul>
+<h2>Knowledge Distribution</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/4qfsmE11Ejo/section-04.png" alt="Illustration: Knowledge Distribution"><figcaption>Illustration: Knowledge Distribution</figcaption></figure>
+<p>The speaker references William Gibson&#x27;s quote: &quot;The future is already here, it&#x27;s just not very evenly distributed.&quot; He applies this to software development knowledge. Many solutions to common problems were figured out decades ago but are not widely distributed or applied.</p>
+<ul>
+<li>Software development has solved many common problems for decades.
+Solutions exist but are not evenly distributed.</li>
+<li>The speaker emphasizes that knowledge is not missing.
+It&#x27;s poorly communicated and distributed.</li>
+<li>The XKCD reference highlights that 10,000 people learn something new daily.
+This reflects the ongoing learning process in software development.</li>
+</ul>
+<h2>Monolith Terminology</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/4qfsmE11Ejo/section-05.png" alt="Illustration: Monolith Terminology"><figcaption>Illustration: Monolith Terminology</figcaption></figure>
+<p>The term &#x27;monolith&#x27; comes from Greek &#x27;monolithos,&#x27; meaning one stone. It describes a single block of stone, often used as a monument. In software, it incorrectly implies indivisibility, causing confusion.</p>
+<ul>
+<li>Monolith was historically used to describe a big chunk of code, not a specific architectural approach. The term was misapplied to software architecture.</li>
+<li>The Oxford English Dictionary defines monolith as a large structure, but this was misapplied to software to imply indivisibility.</li>
+<li>The speaker noted that monoliths often have packages and subsystems, contradicting the assumption they are unorganized.</li>
+</ul>
+<h2>Microservices Misconceptions</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/4qfsmE11Ejo/section-06.png" alt="Illustration: Microservices Misconceptions"><figcaption>Illustration: Microservices Misconceptions</figcaption></figure>
+<p>Microservices are often misunderstood as simply small services. The term &#x27;micro&#x27; means extremely small, differentiating from large SOA-era services.</p>
+<ul>
+<li>Microservices should not be confused with &#x27;service-oriented architecture.&#x27; The term was avoided due to past misuse.</li>
+<li>A client once told the speaker they couldn&#x27;t use &#x27;agile&#x27; because it had been &#x27;completely screwed up,&#x27; so they replaced it with &#x27;lean&#x27; in their slides.</li>
+<li>A 40-line method was considered problematic by one company, but the speaker noted many companies would &#x27;kill for methods that short.&#x27;</li>
+</ul>
+<h2>Defining Microservices</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/4qfsmE11Ejo/section-07.png" alt="Illustration: Defining Microservices"><figcaption>Illustration: Defining Microservices</figcaption></figure>
+<p>Microservices are an architectural style where a single application runs as small, independent services. Each service runs in its own process and communicates via lightweight mechanisms.</p>
+<ul>
+<li>Services are built around business capabilities, not technical domains, aligning development with organizational goals.</li>
+<li>Services must be independently deployable using CI/CD pipelines, enabling continuous delivery.</li>
+<li>Microservices require clear interfaces with contractual semantics, not just syntax, to avoid implementation leakage.</li>
+<li>Each service hides its internal design decisions, promoting stability and independent evolution.</li>
+</ul>
+<h2>Modular Monoliths: A Misunderstood Concept</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/4qfsmE11Ejo/section-08.png" alt="Illustration: Modular Monoliths: A Misunderstood Concept"><figcaption>Illustration: Modular Monoliths: A Misunderstood Concept</figcaption></figure>
+<p>The term &#x27;modular monolith&#x27; emerged from a misunderstanding of software architecture. It describes a monolith structured into modules using rational criteria, not a negative term. Simon Brown coined it in 2015 to clarify that microservices don&#x27;t inherently provide more modularity than well-structured monoliths.</p>
+<ul>
+<li>Modular monoliths use information hiding to minimize internal knowledge exposure. Interfaces reveal only necessary details about inner workings.</li>
+<li>This approach aligns with Alan Kay&#x27;s object-oriented philosophy, not Dave Parnas&#x27; 1972 principles.</li>
+<li>Microservices replicate decades-old modularity principles with added runtime and deployment complexity.</li>
+</ul>
+<h2>Origins of Modularity Principles</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/4qfsmE11Ejo/section-09.png" alt="Illustration: Origins of Modularity Principles"><figcaption>Illustration: Origins of Modularity Principles</figcaption></figure>
+<p>Modularity principles trace back to 1968 and earlier. The 1968 NATO conference on software engineering introduced key ideas, though the term &#x27;software engineering&#x27; was coined by Margaret Hamilton in the mid-1960s for Apollo guidance systems.</p>
+<ul>
+<li>Dave Parnas&#x27; 1972 paper defined information hiding: modules hide design decisions behind minimal interfaces.</li>
+<li>Butler Lampson&#x27;s 1983 work described interfaces as contracts between clients and suppliers in component-based development.</li>
+<li>Smalltalk 80 (1980) influenced modern paradigms like agile, XP, and test-driven development through its uniform object model.</li>
+</ul>
+<h2>Object-Oriented Programming Misconceptions</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/4qfsmE11Ejo/section-10.png" alt="Illustration: Object-Oriented Programming Misconceptions"><figcaption>Illustration: Object-Oriented Programming Misconceptions</figcaption></figure>
+<p>Alan Kay&#x27;s object-oriented philosophy is often misunderstood. It emphasizes messaging, local state protection, and extreme late binding—not auto-properties or dependency-injected &#x27;manager&#x27; classes.</p>
+<ul>
+<li>True object orientation avoids &#x27;anemic domain models&#x27; and manager objects. These are common but incorrect implementations.</li>
+<li>Smalltalk 72 (1972) and Smalltalk 80 (1980) pioneered these ideas. Ruby retains Smalltalk&#x27;s influence, while Objective-C combines C and Smalltalk poorly.</li>
+<li>The Unix philosophy (&#x27;write programs that do one thing well&#x27;) predates and parallels these concepts.</li>
+</ul>
+<h2>The Microservices Misstep</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/4qfsmE11Ejo/section-11.png" alt="Illustration: The Microservices Misstep"><figcaption>Illustration: The Microservices Misstep</figcaption></figure>
+<p>Microservices were mistakenly seen as an unconditional good. They replicate modularity principles but add runtime complexity. The term &#x27;modular monolith&#x27; clarifies that modularity exists in well-structured monoliths.</p>
+<ul>
+<li>Microservices don&#x27;t provide more modularity than a modular monolith. They offer different trade-offs in deployment and runtime.</li>
+<li>Early modularization happened due to technical limits like editor memory or compiler constraints, not architectural choice.</li>
+<li>Alan Perlis observed that all programs eventually become &#x27;raccoon&#x27;—overly complex and fragile—regardless of architecture.</li>
+</ul>
+<h2>Modularity: Not Just a Buzzword</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/4qfsmE11Ejo/section-12.png" alt="Illustration: Modularity: Not Just a Buzzword"><figcaption>Illustration: Modularity: Not Just a Buzzword</figcaption></figure>
+<p>Modularity is a stable principle, not a new trend. It applies across development, deployment, and runtime stages. The term&#x27;s meaning shifts depending on context, causing confusion.</p>
+<ul>
+<li>Modular design dates back to the 1960s, with principles like clean separation of concerns and well-defined interfaces remaining relevant today.</li>
+<li>Development modularity involves source code organization, while deployment modularity refers to deployable units like Java modules or OSGi bundles.</li>
+<li>Runtime modularity describes how processes or memory structures appear during execution, such as separate processes in microservices.</li>
+</ul>
+<h2>The Real Problem: Messy Architecture</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/4qfsmE11Ejo/section-13.png" alt="Illustration: The Real Problem: Messy Architecture"><figcaption>Illustration: The Real Problem: Messy Architecture</figcaption></figure>
+<p>The issue isn&#x27;t monoliths versus microservices—it&#x27;s messy architecture. Both can be poorly structured, but microservices add complexity without benefits.</p>
+<ul>
+<li>A well-structured monolith can outperform a poorly structured microservices system in maintainability and deployment speed.</li>
+<li>Microservices amplify existing problems, making them harder to fix due to added complexity and communication overhead.</li>
+<li>Fault tolerance matters most in critical systems like Mars rovers, where crashes cost hundreds of millions of dollars.</li>
+</ul>
+<h2>Architectural Principles Across Time</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/4qfsmE11Ejo/section-14.png" alt="Illustration: Architectural Principles Across Time"><figcaption>Illustration: Architectural Principles Across Time</figcaption></figure>
+<p>Architectural principles like modularity remain stable despite changing technologies. Surface-level tech changes rapidly, but core principles endure.</p>
+<ul>
+<li>Mars Curiosity&#x27;s codebase used C99 with static analysis and VxWorks, emphasizing clean separation of concerns and fault tolerance. The speaker noted the landing year as &#x27;around 2012&#x27; with uncertainty.</li>
+<li>Fault tolerance is critical for space systems but less so for mobile apps, where crashes are merely annoying.</li>
+<li>Programming languages often outlive their users, showing how some tech layers change slowly compared to surface innovations.</li>
+</ul>
+<h2>Defining Architecture Clearly</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/4qfsmE11Ejo/section-15.png" alt="Illustration: Defining Architecture Clearly"><figcaption>Illustration: Defining Architecture Clearly</figcaption></figure>
+<p>Architecture should answer three questions: What are the structural elements? How do they interact? What constraints apply? This avoids ambiguous terms like &#x27;module.&#x27;</p>
+<ul>
+<li>Structural elements include functions, development modules, and runtime processes, each at different scales of system design.</li>
+<li>Avoiding terms like &#x27;module&#x27; prevents confusion, as their meaning varies across contexts and eras.</li>
+<li>Paul Dyson and Andy Long&#x27;s book offers a clear framework for defining architecture through these three questions.</li>
+</ul>
+<h2>Architectural Elements and Relationships</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/4qfsmE11Ejo/section-16.png" alt="Illustration: Architectural Elements and Relationships"><figcaption>Illustration: Architectural Elements and Relationships</figcaption></figure>
+<p>When sketching a system on a whiteboard, focus on structural elements and their relationships. Whiteboards help clarify collaboration and avoid missing key details. Many conferences lack whiteboard budgets, but they&#x27;re essential for visualizing architecture.</p>
+<ul>
+<li>Relationships include HTTPS connections, object references, class inheritance, and API implementations.</li>
+<li>A module can mean any structural element, but naming is hard due to inconsistent terminology like &#x27;component&#x27; or &#x27;package&#x27;.</li>
+<li>Java&#x27;s package is a namespace with many leaks, not a delivery unit or module, causing confusion.</li>
+</ul>
+<h2>Naming Challenges in Software</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/4qfsmE11Ejo/section-17.png" alt="Illustration: Naming Challenges in Software"><figcaption>Illustration: Naming Challenges in Software</figcaption></figure>
+<p>Naming is hard because it requires precise meaning. Terms like &#x27;module&#x27;, &#x27;component&#x27;, and &#x27;package&#x27; often overlap or conflict, leading to miscommunication.</p>
+<ul>
+<li>A &#x27;component&#x27; might mean a runtime deployable unit or just a part of a composition, such as a class or function.</li>
+<li>Services now offer services, and &#x27;process&#x27; can refer to OS processes or runtime isolation units, causing ambiguity.</li>
+<li>Avoid &#x27;non-functional requirements&#x27;—it means broken. Instead, specify what you need, like performance or maintainability.</li>
+</ul>
+<h2>Functional vs. Operational Trade-offs</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/4qfsmE11Ejo/section-18.png" alt="Illustration: Functional vs. Operational Trade-offs"><figcaption>Illustration: Functional vs. Operational Trade-offs</figcaption></figure>
+<p>Separate requirements into functional (semantics) and operational (runtime qualities). Developmental aspects like maintainability are also key.</p>
+<ul>
+<li>Functional requirements are verified via unit tests; operational focuses on qualities like performance and availability.</li>
+<li>Trade-offs involve balancing runtime needs against development complexity. Better performance may increase code complexity.</li>
+<li>Microservices don&#x27;t guarantee benefits; they can worsen performance or development complexity without careful consideration.</li>
+</ul>
+<h2>Timeless Architectural Considerations</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/4qfsmE11Ejo/section-19.png" alt="Illustration: Timeless Architectural Considerations"><figcaption>Illustration: Timeless Architectural Considerations</figcaption></figure>
+<p>Modular monoliths use 1970s structured programming principles. History shows many modern ideas are revisited, not invented.</p>
+<ul>
+<li>The 1972 book on structured programming remains relevant, highlighting that some concepts are deeply rooted in history.</li>
+<li>Architectural choices require context-aware trade-offs, not simple assumptions like &#x27;more complexity = better performance&#x27;.</li>
+<li>Avoid binary thinking: functional vs. non-functional is misleading. Focus on what the system actually does and how it runs.</li>
+</ul>
+<h2>Modular Boundaries Define Systems</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/4qfsmE11Ejo/section-20.png" alt="Illustration: Modular Boundaries Define Systems"><figcaption>Illustration: Modular Boundaries Define Systems</figcaption></figure>
+<p>Modular boundaries matter more than monoliths. They exist at multiple levels: code (function, class, module), deployment, team structure, and runtime. Boundaries define trust and relationships between components.</p>
+<ul>
+<li>Boundaries differ in purpose. A house door lock prevents outside entry, while a bathroom lock protects privacy. Similarly, module boundaries serve different roles based on context.</li>
+<li>Team structure aligns with module ownership. Conway&#x27;s Law (1968) shows teams mirror system boundaries. This applies to microservices and team topologies.</li>
+<li>High coupling means modules depend on each other. Changes in one module often break others. Minimize coupling but don&#x27;t eliminate it—systems need some interdependence.</li>
+</ul>
+<h2>Cohesion and Comprehensibility</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/4qfsmE11Ejo/section-21.png" alt="Illustration: Cohesion and Comprehensibility"><figcaption>Illustration: Cohesion and Comprehensibility</figcaption></figure>
+<p>Cohesion measures how well elements within a module work together. High cohesion means a module is a single, integral unit. This differs from the misunderstood single responsibility principle.</p>
+<ul>
+<li>Comprehensibility requires studying systems one module at a time. Teams with 100k lines of code had similar functionality to teams with 1M lines but better outcomes.</li>
+<li>High cohesion reduces cognitive load. A module should feel like &#x27;one thing,&#x27; not a collection of responsibilities.</li>
+<li>AI tools struggle with large codebases. Smaller modules improve developer and AI efficiency.</li>
+</ul>
+<h2>Historical Context and Modern Relevance</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/4qfsmE11Ejo/section-22.png" alt="Illustration: Historical Context and Modern Relevance"><figcaption>Illustration: Historical Context and Modern Relevance</figcaption></figure>
+<p>Modular programming ideas date back to 1970s works like Dijkstra&#x27;s separation of concerns and Parnas&#x27; information hiding. These concepts remain relevant today.</p>
+<ul>
+<li>Parnas (1972) listed benefits: shorter development time, product flexibility, and comprehensibility. These mirror modern microservices goals.</li>
+<li>Information hiding (Parnas 1971) defines module connections as shared assumptions. Dependencies often exist beyond code, like JSON or database conventions.</li>
+<li>Systems with high coupling appear tangled. Clear separation improves understandability and reduces maintenance pain.</li>
+</ul>
+<h2>Trade-offs and No Silver Bullets</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/4qfsmE11Ejo/section-23.png" alt="Illustration: Trade-offs and No Silver Bullets"><figcaption>Illustration: Trade-offs and No Silver Bullets</figcaption></figure>
+<p>Modularity requires balancing trade-offs. Runtime needs, deployment strategies, and team structure influence boundary decisions. There&#x27;s no single solution.</p>
+<ul>
+<li>Teams with 100k lines of code outperformed those with 1M lines in functionality, reliability, and developer satisfaction.</li>
+<li>Full-stack knowledge is often misunderstood. True full-stack means understanding modular relationships, not just JavaScript and databases.</li>
+<li>Software development cycles repeat ideas. New terms like &#x27;microservices&#x27; build on old concepts without replacing them.</li>
+</ul>
+</article>
