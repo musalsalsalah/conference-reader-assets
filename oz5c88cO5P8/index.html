@@ -1,0 +1,535 @@
+<!doctype html><meta charset="utf-8">
+<article>
+<h1>System Design Interview Prep for Beginners (Full Course)</h1>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/cover.png" alt="Cover illustration"><figcaption>Cover illustration</figcaption></figure>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/article-diagram.png" alt="Article-level architecture diagram"><figcaption>Article architecture map</figcaption></figure>
+<h2>System Design Interview Basics</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-01.png" alt="Illustration: System Design Interview Basics"><figcaption>Illustration: System Design Interview Basics</figcaption></figure>
+<p>System design interviews test your ability to build scalable systems under pressure. They&#x27;re intense because you must consider multiple components and trade-offs. The goal is to provide a framework for answering questions, not to memorize specific technologies.</p>
+<ul>
+<li>Interviewers don&#x27;t expect perfect systems in 45 minutes. They value clear communication and problem-solving over technical specifics.</li>
+<li>Common failures include jumping straight to architecture without clarifying requirements or over-engineering with unnecessary components.</li>
+<li>Successful candidates ask targeted questions to define the problem before designing.</li>
+</ul>
+<h2>What Interviewers Really Want</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-02.png" alt="Illustration: What Interviewers Really Want"><figcaption>Illustration: What Interviewers Really Want</figcaption></figure>
+<p>Interviewers focus on four key skills: judgment under ambiguity, technical depth, communication, and collaboration. They assess how you handle vague problems and explain trade-offs.</p>
+<ul>
+<li>Good candidates narrow vague problems into concrete requirements. Bad candidates draw complex diagrams without clarifying scope.</li>
+<li>Example: One candidate focused on Instagram&#x27;s photo feed and follow system; another wasted time on search and messaging features.</li>
+<li>Interviewers reject candidates who ignore interviewer-provided numbers like &#x27;10,000 users&#x27; and build over-engineered systems.</li>
+</ul>
+<h2>The Six-Step Framework</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-03.png" alt="Illustration: The Six-Step Framework"><figcaption>Illustration: The Six-Step Framework</figcaption></figure>
+<p>Follow this six-step method to structure your system design answers. It ensures you address requirements before building solutions.</p>
+<ul>
+<li>Step 1: Clarify requirements. Spend 5 minutes making the problem concrete. Example: Define Instagram as photo posting, following, and fast feed loading.</li>
+<li>Step 2: Back-of-envelope estimation. Estimate user numbers and usage patterns. Example: 10 million daily users, read-heavy (100 scrolls/week vs. 1 post/week).</li>
+<li>Step 3: Define API. Identify key user actions: upload photo, follow user, get home feed. These define what the system must store.</li>
+<li>Step 4: High-level design. Draw basic components: user, app server, databases for users/follows, photo storage, and data flow.</li>
+<li>Step 5: Deep dives. Focus on hard parts like Instagram&#x27;s home feed algorithm for million-follower posts.</li>
+<li>Step 6: Bottlenecks and scaling. Analyze weak points (e.g., follows database bottleneck) and propose fixes like adding cache.</li>
+</ul>
+<h2>Clarifying Requirements</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-04.png" alt="Illustration: Clarifying Requirements"><figcaption>Illustration: Clarifying Requirements</figcaption></figure>
+<p>The first 5 minutes are critical. Ask targeted questions to define scope. Avoid memorized questions that don&#x27;t impact your design.</p>
+<ul>
+<li>Bad question: &#x27;Should I use SQL or NoSQL?&#x27; Database choice depends on data needs, not interviewer input.</li>
+<li>Bad question: &#x27;Should the system be scalable?&#x27; Scalability is assumed; ask for user numbers instead.</li>
+<li>Good questions focus on functional and non-functional requirements: user count, read/write ratio, data loss tolerance, and latency needs.</li>
+<li>Example: For a photo-sharing app, ask &#x27;How many users and how fast are they growing?&#x27; and &#x27;Do people scroll more than post?&#x27;</li>
+</ul>
+<h2>Clarify Requirements First</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-05.png" alt="Illustration: Clarify Requirements First"><figcaption>Illustration: Clarify Requirements First</figcaption></figure>
+<p>Ask questions that change the design. For URL shorteners, focus on custom links, expiration, and analytics. Answers define scope and features.</p>
+<ul>
+<li>Custom links are disallowed. Short links never expire. Analytics are optional but not required.</li>
+<li>Clarify scope: create short links that redirect to original URLs without custom options or expiration.</li>
+</ul>
+<h2>Estimate System Scale</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-06.png" alt="Illustration: Estimate System Scale"><figcaption>Illustration: Estimate System Scale</figcaption></figure>
+<p>Estimate numbers that impact design. Focus on daily link creation, click volume, and total storage needs.</p>
+<ul>
+<li>1 million new links per day equals 12 per second. Databases handle this easily.</li>
+<li>Each link gets 1,000 clicks on average. This makes reads 1,000x more frequent than writes.</li>
+<li>Over 10 years, store 3.6 billion links. Focus on optimizing read performance for high traffic.</li>
+</ul>
+<h2>Design the Core API</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-07.png" alt="Illustration: Design the Core API"><figcaption>Illustration: Design the Core API</figcaption></figure>
+<p>Define two essential APIs: create short link and redirect to original URL. This requires a simple key-value mapping.</p>
+<ul>
+<li>Two essential APIs: create short link and redirect to original URL.</li>
+<li>Store a simple key-value mapping: short code to long URL in a database.</li>
+<li>Use Postgres with an index on short codes. Avoid NoSQL for this simple key-value need.</li>
+</ul>
+<h2>Generate Unique Short Codes</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-08.png" alt="Illustration: Generate Unique Short Codes"><figcaption>Illustration: Generate Unique Short Codes</figcaption></figure>
+<p>Choose between hashing and counting. Hashing risks collisions. Counting avoids collisions but requires shuffling for security.</p>
+<ul>
+<li>Hashing may require retries. Check database for existing codes after generating a hash and retry if needed.</li>
+<li>Counting with a global counter avoids collisions. Encode numbers in base 62 for short codes.</li>
+<li>Base 62 uses 62 characters (0-9, a-z, A-Z). Seven characters provide trillions of unique codes.</li>
+</ul>
+<h2>Address Security and Concurrency</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-09.png" alt="Illustration: Address Security and Concurrency"><figcaption>Illustration: Address Security and Concurrency</figcaption></figure>
+<p>Shuffle counter numbers before encoding to prevent guessing. Handle concurrent requests with atomic operations.</p>
+<ul>
+<li>Shuffle counter numbers before encoding to prevent guessing. Apply fixed secret rules.</li>
+<li>Counter collisions occur if two requests access simultaneously. Use atomic operations to prevent this.</li>
+<li>Shuffling maintains uniqueness while making codes appear random to attackers.</li>
+</ul>
+<h2>Handling High Traffic with Caching</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-10.png" alt="Illustration: Handling High Traffic with Caching"><figcaption>Illustration: Handling High Traffic with Caching</figcaption></figure>
+<p>Normal traffic: 1 billion daily redirects, about 11,000 database reads per second. A viral link can cause 1 million clicks in an hour, overwhelming a single database.</p>
+<ul>
+<li>Database reads for the same URL are wasteful since the answer never changes.</li>
+<li>A celebrity link can generate 1 million clicks in an hour, causing a traffic spike.</li>
+<li>11,000 reads per second is already a lot for one database machine.</li>
+</ul>
+<h2>Cache Implementation</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-11.png" alt="Illustration: Cache Implementation"><figcaption>Illustration: Cache Implementation</figcaption></figure>
+<p>Use Redis cache to store hotkeys (popular links) for faster access. The cache serves the same URL mapping without database queries.</p>
+<ul>
+<li>First cache hit: database read, then cache stores the URL for future requests.</li>
+<li>Caching works perfectly for URL shorteners since mappings never change.</li>
+<li>Redis answers in under a millisecond, making it ideal for this use case.</li>
+</ul>
+<h2>Cache Staleness and Limitations</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-12.png" alt="Illustration: Cache Staleness and Limitations"><figcaption>Illustration: Cache Staleness and Limitations</figcaption></figure>
+<p>Cache memory is limited; Redis removes unused entries to make room for new ones. Popular links stay cached while inactive links are removed.</p>
+<ul>
+<li>Cache staleness is not a problem because URL mappings are permanent and never updated.</li>
+<li>Redis automatically removes unused entries, keeping the cache efficient.</li>
+<li>This is a dream case for caching since the data never changes.</li>
+</ul>
+<h2>Advanced Caching Strategies</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-13.png" alt="Illustration: Advanced Caching Strategies"><figcaption>Illustration: Advanced Caching Strategies</figcaption></figure>
+<p>For extremely hot links, store top links in each server&#x27;s memory. Use a CDN to serve links from servers closest to the user.</p>
+<ul>
+<li>Each application server can keep its own small copy of the top links in memory.</li>
+<li>CDN serves users from the nearest server, reducing latency for global users.</li>
+<li>CDN ensures Tokyo users get URLs from nearby servers, not Virginia.</li>
+</ul>
+<h2>Redirect Type Selection</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-14.png" alt="Illustration: Redirect Type Selection"><figcaption>Illustration: Redirect Type Selection</figcaption></figure>
+<p>Choose 302 redirects over 301 to keep analytics and control. 301 redirects cause browsers to remember the destination, skipping future requests.</p>
+<ul>
+<li>302 redirects keep every click flowing through the service for analytics.</li>
+<li>301 prevents tracking clicks and makes disabling links impossible.</li>
+<li>302 allows disabling links if they point to scam pages.</li>
+</ul>
+<h2>System Resilience and Data Safety</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-15.png" alt="Illustration: System Resilience and Data Safety"><figcaption>Illustration: System Resilience and Data Safety</figcaption></figure>
+<p>Cache failure slows the system but doesn&#x27;t break it. Database handles all reads during cache downtime.</p>
+<ul>
+<li>Database must have replicas and backups to prevent data loss from the mapping table.</li>
+<li>Global counter must never repeat numbers to avoid duplicate short codes.</li>
+<li>Cache is a performance layer, not the source of truth.</li>
+</ul>
+<h2>Follow-Up Questions and Solutions</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-16.png" alt="Illustration: Follow-Up Questions and Solutions"><figcaption>Illustration: Follow-Up Questions and Solutions</figcaption></figure>
+<p>Follow-up questions test design changes. Two requests at once need locks. Counter as single point of failure requires blocks of numbers.</p>
+<ul>
+<li>Two requests at once: Use locks to ensure only one request accesses the counter.</li>
+<li>Counter as single point of failure: Servers request blocks of numbers at once.</li>
+<li>Link expiration: Add expiry dates to the mapping table and check before redirecting.</li>
+</ul>
+<h2>Rate Limiter Design</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-17.png" alt="Illustration: Rate Limiter Design"><figcaption>Illustration: Rate Limiter Design</figcaption></figure>
+<p>Rate limiters prevent abuse in systems like ChatGPT and URL shorteners. Without them, a user named Shadow could flood APIs with 1 million requests per hour, filling databases with junk URLs and slowing legitimate users.</p>
+<ul>
+<li>Reject requests exceeding 100 per minute per user.
+Respond with HTTP 429 and a retry-after header.</li>
+<li>Track requests by account for logged-in users.
+Track by IP address for non-logged-in users.</li>
+<li>Normal users make about 100 requests per day.
+Heavy users hit the 100-per-minute limit.</li>
+</ul>
+<h2>Clarifying Requirements</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-18.png" alt="Illustration: Clarifying Requirements"><figcaption>Illustration: Clarifying Requirements</figcaption></figure>
+<p>Ask three key questions before designing: how to identify users, what limit to set, and how to handle exceeded limits. Each choice has trade-offs.</p>
+<ul>
+<li>Tracking by IP blocks entire offices sharing a connection.
+Attackers can change IPs to bypass limits.</li>
+<li>Tracking by API key only works for developers.
+Most users don&#x27;t use API keys.</li>
+<li>Reject requests exceeding limits immediately.
+Include retry-after headers to prevent retry loops.</li>
+</ul>
+<h2>Back-of-the-Envelope Estimation</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-19.png" alt="Illustration: Back-of-the-Envelope Estimation"><figcaption>Illustration: Back-of-the-Envelope Estimation</figcaption></figure>
+<p>Estimate storage and request rates to guide design. A simple counter uses 50 bytes per user, fitting 10 million users in 500 MB.</p>
+<ul>
+<li>10 million users make 1 billion requests daily.
+Peak traffic reaches 35,000 requests per second.</li>
+<li>Normal users make about 100 requests per day.
+Heavy users hit the 100-per-minute limit.</li>
+<li>Fixed window limits allow 200 requests in 2 seconds.
+Sliding window tracks exact timestamps for last 60 seconds.</li>
+</ul>
+<h2>High-Level Design</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-20.png" alt="Illustration: High-Level Design"><figcaption>Illustration: High-Level Design</figcaption></figure>
+<p>Place the rate limiter at the API gateway to reject requests early. Start with a simple fixed window, then address its flaws.</p>
+<ul>
+<li>Fixed window resets counters every minute.
+Allows 200 requests in 2 seconds during minute transitions.</li>
+<li>Sliding window logs every request timestamp.
+Uses 2.5 KB per user, totaling 25 GB for 10 million users.</li>
+<li>Token bucket holds 100 tokens per user.
+Fills at 1.67 tokens per second, allowing bursts.</li>
+</ul>
+<h2>Token Bucket Rate Limiting</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-21.png" alt="Illustration: Token Bucket Rate Limiting"><figcaption>Illustration: Token Bucket Rate Limiting</figcaption></figure>
+<p>The token bucket algorithm provides a sustained rate of 1.67 tokens per second. This approach differs from fixed windows by allowing intentional burst control. A smaller bucket size reduces burst allowance without changing the sustained rate.</p>
+<ul>
+<li>Bucket size determines burst allowance. A 20-token bucket allows 20 requests at once while maintaining 1.67 tokens per second.</li>
+<li>Each user&#x27;s bucket stores only tokens remaining and last refill time. This requires just 50 bytes of memory per user.</li>
+<li>Users can spend all 100 tokens in one go if the bucket is full. They still get two requests per second when the bucket is empty.</li>
+</ul>
+<h2>Distributed System Challenges</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-22.png" alt="Illustration: Distributed System Challenges"><figcaption>Illustration: Distributed System Challenges</figcaption></figure>
+<p>Multiple API gateways cause inconsistent rate limiting. Each gateway tracks separate buckets for the same user, effectively doubling available requests.</p>
+<ul>
+<li>Moving buckets to shared storage like Redis solves the problem. All gateways access the same bucket data.</li>
+<li>Atomic operations prevent race conditions. Redis executes read-modify-write as a single script.</li>
+<li>Without atomic operations, two gateways could both allow a request when only one token remained.</li>
+</ul>
+<h2>Performance and Failure Modes</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-23.png" alt="Illustration: Performance and Failure Modes"><figcaption>Illustration: Performance and Failure Modes</figcaption></figure>
+<p>Redis handles 100,000 operations per second. Our system needs 35,000 operations per second, leaving room for growth. Network latency affects performance significantly.</p>
+<ul>
+<li>1ms latency is acceptable if Redis is in the same region. 50ms latency makes the rate limiter the system bottleneck.</li>
+<li>Fail open allows all requests during Redis failure. This is safer for normal APIs like Stripe&#x27;s.</li>
+<li>Fail closed blocks all requests during Redis failure. This is safer for sensitive endpoints like login APIs.</li>
+</ul>
+<h2>Customizable Rate Limits</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-24.png" alt="Illustration: Customizable Rate Limits"><figcaption>Illustration: Customizable Rate Limits</figcaption></figure>
+<p>Different APIs require different rate limits. Limits depend on API functionality and resource usage.</p>
+<ul>
+<li>Read APIs can handle 10,000 requests per minute. Create APIs are limited to 100 requests per minute.</li>
+<li>Login APIs have the strictest limits. Three consecutive calls may trigger rate limiting.</li>
+<li>Rate limits are stored as rules. The gateway applies the correct rule based on the API endpoint.</li>
+</ul>
+<h2>Scaling Redis for High Traffic</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-25.png" alt="Illustration: Scaling Redis for High Traffic"><figcaption>Illustration: Scaling Redis for High Traffic</figcaption></figure>
+<p>One Redis instance handles 100,000 operations per second. For 1 million requests per second, we need about 10 Redis instances.</p>
+<ul>
+<li>Redis instances can be partitioned by user. All requests for a user go to the same Redis instance.</li>
+<li>Partitioning prevents cross-instance communication. Each Redis instance manages its own user buckets.</li>
+<li>High traffic users may still trigger rate limits. The system handles this by maintaining consistent user bucket access.</li>
+</ul>
+<h2>Rate Limiter Optimization</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-26.png" alt="Illustration: Rate Limiter Optimization"><figcaption>Illustration: Rate Limiter Optimization</figcaption></figure>
+<p>Current rate limiting checks every API request against Reddus, causing high load even at low limits. For example, 50,000 requests per second would trigger 50,000 Reddus calls.</p>
+<ul>
+<li>Stripe uses a local counter in API gateway memory that syncs with Reddus every few hundred milliseconds.</li>
+<li>This avoids network calls to Reddus on every request, reducing load significantly.</li>
+<li>The gateway rejects requests immediately once it knows a user is blocked, avoiding Reddus checks.</li>
+</ul>
+<h2>Notification System Requirements</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-27.png" alt="Illustration: Notification System Requirements"><figcaption>Illustration: Notification System Requirements</figcaption></figure>
+<p>Notification systems deliver event-based messages to users across channels like push, SMS, email, and in-app dots. They must respect user preferences and handle two notification types differently.</p>
+<ul>
+<li>Transactional notifications (e.g., payment confirmations) require near-instant delivery within seconds.</li>
+<li>Marketing notifications (e.g., flash sales) can tolerate delays of a few seconds.</li>
+<li>Losing notifications is bad, but duplicate notifications are worse (e.g., double payment SMS).</li>
+</ul>
+<h2>System Design Framework</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-28.png" alt="Illustration: System Design Framework"><figcaption>Illustration: System Design Framework</figcaption></figure>
+<p>Clarify requirements before designing. Key questions include notification types, delivery channels, speed requirements, and tolerance for lost/duplicate messages.</p>
+<ul>
+<li>Ask if users can disable marketing notifications but not transactional ones.</li>
+<li>Determine if notifications must be delivered instantly or can be queued for later processing.</li>
+<li>Confirm whether losing notifications or sending duplicates is more critical to avoid.</li>
+</ul>
+<h2>Notification Delivery Mechanics</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-29.png" alt="Illustration: Notification Delivery Mechanics"><figcaption>Illustration: Notification Delivery Mechanics</figcaption></figure>
+<p>The system stores notifications in a database with fields like user ID, channels, message body, and status. External services handle actual delivery.</p>
+<ul>
+<li>Push notifications use APNS (Apple) or FCM (Google) gateways. SMS uses providers like Twilio.</li>
+<li>Emails go through services like SendGrid. These external systems can fail or delay delivery.</li>
+<li>In-app notifications track if users have seen messages; SMS/email lack read receipts.</li>
+</ul>
+<h2>Notification Storage and Preferences</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-30.png" alt="Illustration: Notification Storage and Preferences"><figcaption>Illustration: Notification Storage and Preferences</figcaption></figure>
+<p>Store notifications in a SQL database like PostgreSQL. Each notification is a small row. Even 10 million notifications daily (100 writes per second) is manageable. Also store user preferences to determine if marketing notifications can be sent.</p>
+<ul>
+<li>Use PostgreSQL for storage. It handles small rows efficiently. 100 writes per second is well within capacity.</li>
+<li>Store user preferences separately. This determines if marketing notifications are allowed for each user.</li>
+<li>Database holds full notification details: message body, channels, status, timestamp.</li>
+</ul>
+<h2>Initial Notification Flow</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-31.png" alt="Illustration: Initial Notification Flow"><figcaption>Illustration: Initial Notification Flow</figcaption></figure>
+<p>The notification server saves requests to the database with status &#x27;pending&#x27;. It then sends notifications directly to providers. This approach fails under high load or crashes.</p>
+<ul>
+<li>Server waits for confirmation from all providers. This causes 1-2 second delays per notification.</li>
+<li>A server crash during processing can lose notifications. For example, if a notification is partially sent but confirmation is missing.</li>
+<li>This method works for small scale but not for high traffic or failures.</li>
+</ul>
+<h2>Queue-Based Processing</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-32.png" alt="Illustration: Queue-Based Processing"><figcaption>Illustration: Queue-Based Processing</figcaption></figure>
+<p>Use a queue to separate notification acceptance from sending. The database holds full records. The queue holds small tickets with notification IDs and a note that the notification is waiting to be sent.</p>
+<ul>
+<li>Queue holds notification IDs and a note that the notification is waiting to be sent.</li>
+<li>Workers pick tickets from the queue. They fetch full details from the database and send to providers.</li>
+<li>If a worker crashes, the queue reassigns the ticket to another worker. No data loss occurs.</li>
+<li>Multiple workers can run in parallel. This eliminates single points of failure.</li>
+</ul>
+<h2>Queue Requirements</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-33.png" alt="Illustration: Queue Requirements"><figcaption>Illustration: Queue Requirements</figcaption></figure>
+<p>Choose a queue with three key properties: durability, acknowledgment, and multi-worker support.</p>
+<ul>
+<li>Durable: Store tickets on disk, not RAM. Prevents data loss if the queue restarts.</li>
+<li>Acknowledgment: Remove messages only after workers confirm completion.</li>
+<li>Multi-worker: Support adding more workers as queue size grows.</li>
+<li>No strict ordering needed. Notifications can be processed out of order without issues.</li>
+</ul>
+<h2>Channel-Specific Queues</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-34.png" alt="Illustration: Channel-Specific Queues"><figcaption>Illustration: Channel-Specific Queues</figcaption></figure>
+<p>Use separate queues for each notification channel. This prevents one slow provider from blocking all channels.</p>
+<ul>
+<li>Email provider slowdown only affects email notifications. Other channels continue processing.</li>
+<li>In-app notifications require no external providers. Workers mark them as sent directly in the database.</li>
+<li>In-app notifications use a &#x27;seen&#x27; flag. The mobile app checks this flag when displaying notifications.</li>
+<li>Fan-out distributes one notification event to four separate queues for each channel.</li>
+</ul>
+<h2>Handling Provider Failures</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-35.png" alt="Illustration: Handling Provider Failures"><figcaption>Illustration: Handling Provider Failures</figcaption></figure>
+<p>When a provider fails, retry politely. Avoid overwhelming the provider with immediate retries.</p>
+<ul>
+<li>Retry with increasing delays: 1 second, then 2 seconds, then exponential backoff.</li>
+<li>Do not retry immediately. This prevents overloading the provider during outages.</li>
+<li>Example: If email provider is down for 30 minutes, workers retry with delays to avoid API overload.</li>
+</ul>
+<h2>Exponential Backoff for Retries</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-36.png" alt="Illustration: Exponential Backoff for Retries"><figcaption>Illustration: Exponential Backoff for Retries</figcaption></figure>
+<p>Retry with increasing delays after failures. Wait 4 seconds before the first retry, then double the wait time each time. Stop retrying after several attempts.</p>
+<ul>
+<li>Wait 4 seconds before the first retry, then double the wait time for each subsequent retry.</li>
+<li>Move failed notifications to a dead letter queue after several unsuccessful attempts.</li>
+<li>This prevents overwhelming slow email providers during repeated failures.</li>
+</ul>
+<h2>Handling Duplicate Notifications</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-37.png" alt="Illustration: Handling Duplicate Notifications"><figcaption>Illustration: Handling Duplicate Notifications</figcaption></figure>
+<p>Workers may crash after sending a notification but before acknowledging the queue. This causes duplicate processing. Use a shared store to track sent notifications.</p>
+<ul>
+<li>Check the shared store before sending to avoid duplicates.</li>
+<li>The shared store uses a notification ID as a potency key with an expiry time.</li>
+<li>If the worker crashes after writing the ID but before sending, the notification is not sent but the ID remains.</li>
+</ul>
+<h2>Potency Key Mechanism</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-38.png" alt="Illustration: Potency Key Mechanism"><figcaption>Illustration: Potency Key Mechanism</figcaption></figure>
+<p>Before sending, check if the notification ID exists in the shared store. If it does, drop the ticket. If not, write the ID with an expiry before sending.</p>
+<ul>
+<li>Write the ID to the shared store before calling the provider.</li>
+<li>The ID expires after one minute to allow retries if the notification wasn&#x27;t sent.</li>
+<li>This ensures duplicates are harmless. The system tolerates duplicates but prevents them from being sent.</li>
+</ul>
+<h2>Queue and Worker Flow</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-39.png" alt="Illustration: Queue and Worker Flow"><figcaption>Illustration: Queue and Worker Flow</figcaption></figure>
+<p>Notifications are saved in the database with a unique ID and pending status. A background job adds pending notifications to the queue to avoid two separate writes.</p>
+<ul>
+<li>Save notifications in the database first with pending status.</li>
+<li>The background job processes pending notifications and adds them to the queue.</li>
+<li>Each channel has its own queue to prevent slow providers from blocking others.</li>
+</ul>
+<h2>Failure Handling and Scaling</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-40.png" alt="Illustration: Failure Handling and Scaling"><figcaption>Illustration: Failure Handling and Scaling</figcaption></figure>
+<p>Retry failed notifications with exponential backoff. Move persistent failures to a dead letter queue. Add more workers if queues grow too large.</p>
+<ul>
+<li>Retry with exponential backoff for temporary failures.</li>
+<li>Move notifications to a dead letter queue after several failed attempts.</li>
+<li>Add more workers to process larger queues during high traffic.</li>
+</ul>
+<h2>At-Least-Once Delivery</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-41.png" alt="Illustration: At-Least-Once Delivery"><figcaption>Illustration: At-Least-Once Delivery</figcaption></figure>
+<p>The system uses at-least-once delivery. It may send duplicates but ensures no notifications are lost. Potency keys make duplicates harmless before the provider call.</p>
+<ul>
+<li>Exactly once delivery is impossible in distributed systems.</li>
+<li>Potency keys ensure duplicates are dropped before the provider call.</li>
+<li>The worst case is a notification sent slightly late, not duplicated.</li>
+</ul>
+<h2>Real-World Notification Systems</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-42.png" alt="Illustration: Real-World Notification Systems"><figcaption>Illustration: Real-World Notification Systems</figcaption></figure>
+<p>LinkedIn and Uber use centralized notification platforms. LinkedIn&#x27;s Air Traffic Controller handles all notification types through a single gateway, reducing email volume by 50% and complaints by over 65%.</p>
+<ul>
+<li>LinkedIn replaced multiple team-specific notification systems with Air Traffic Controller, eliminating duplicate notifications across all channels.</li>
+<li>Uber uses priority buckets for push notifications, sending trip updates before promotional offers.</li>
+<li>Priority buckets ensure transactional notifications like login codes reach users within seconds.</li>
+</ul>
+<h2>Handling Notification Queue Issues</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-43.png" alt="Illustration: Handling Notification Queue Issues"><figcaption>Illustration: Handling Notification Queue Issues</figcaption></figure>
+<p>Interviewers test design adjustments with follow-up questions. Key scenarios include queue management and system failures.</p>
+<ul>
+<li>Marketing campaigns should not block transactional notifications. Separate queues prevent login codes from being delayed.</li>
+<li>Email provider downtime requires durable queues and circuit breakers. Workers retry until the provider recovers.</li>
+<li>Backup email providers ensure continuity during outages. Login codes are only valid for about a minute, so late delivery is useless.</li>
+</ul>
+<h2>Exactly Once Delivery Challenges</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-44.png" alt="Illustration: Exactly Once Delivery Challenges"><figcaption>Illustration: Exactly Once Delivery Challenges</figcaption></figure>
+<p>Exactly once delivery is impossible due to network uncertainties. Systems use item potency keys to avoid duplicates.</p>
+<ul>
+<li>A worker may time out after sending a notification. The system cannot confirm if the message was delivered.</li>
+<li>SMS providers accept item potency keys. Duplicate messages are blocked using unique notification IDs.</li>
+<li>Even with mechanisms, edge cases like network issues can cause duplicate notifications.</li>
+</ul>
+<h2>News Feed Design Fundamentals</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-45.png" alt="Illustration: News Feed Design Fundamentals"><figcaption>Illustration: News Feed Design Fundamentals</figcaption></figure>
+<p>A news feed shows posts from followed accounts in chronological order. It is not a news app but a social media feed.</p>
+<ul>
+<li>LinkedIn and X display feeds of posts from followed users. The feed is an endless scroll of recent content.</li>
+<li>Feed requirements include sorting by timestamp, loading within one second, and supporting text, images, and videos.</li>
+<li>Duplicate posts after refresh are acceptable. New posts appear within seconds for followers.</li>
+</ul>
+<h2>Scalability Considerations</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-46.png" alt="Illustration: Scalability Considerations"><figcaption>Illustration: Scalability Considerations</figcaption></figure>
+<p>News feeds are read-heavy systems. For 10 million daily users, feed reads exceed posts by 50:1 ratio.</p>
+<ul>
+<li>10 million daily active users open feeds five times daily. This equals 50 million daily feed reads or 600 per second.</li>
+<li>Users post three times monthly. This results in 1 million daily posts or 12 per second.</li>
+<li>Focus on optimizing feed reading paths due to high read-to-write ratio.</li>
+</ul>
+<h2>API Calls for Newsfeed</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-47.png" alt="Illustration: API Calls for Newsfeed"><figcaption>Illustration: API Calls for Newsfeed</figcaption></figure>
+<p>Mobile apps make API calls on behalf of users. For a newsfeed app, two key endpoints handle posts: create post and get feed. The create post endpoint saves user content, while get feed retrieves posts from followed accounts.</p>
+<ul>
+<li>When a user creates a post, their phone sends content to the create post endpoint.</li>
+<li>Opening the app triggers a get feed endpoint call to receive the top 50 posts from followed accounts.</li>
+<li>The server returns posts from followed accounts only, not all posts in the system.</li>
+</ul>
+<h2>Database Tables for Posts</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-48.png" alt="Illustration: Database Tables for Posts"><figcaption>Illustration: Database Tables for Posts</figcaption></figure>
+<p>Three tables store newsfeed data: users, follows, and posts. The users table includes user IDs, names, and a celebrity flag. The follows table tracks follower relationships. The posts table stores content, author, and timestamp.</p>
+<ul>
+<li>The follows table has two columns: follower and followed user. With 10 million users, it can reach 2 billion rows.</li>
+<li>The posts table organizes data by author and time for quick access to recent posts.</li>
+<li>The celebrity flag in the users table becomes important later for specific feed handling.</li>
+</ul>
+<h2>Initial Feed Building Problem</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-49.png" alt="Illustration: Initial Feed Building Problem"><figcaption>Illustration: Initial Feed Building Problem</figcaption></figure>
+<p>The initial approach rebuilds feeds on every app open. This causes excessive database queries: 600 feed opens per second require 180,000 database lookups each second.</p>
+<ul>
+<li>Peak traffic (5x normal) increases database load to 900,000 lookups per second.</li>
+<li>Most work is wasted because feeds often don&#x27;t change between app opens.</li>
+<li>Rebuilding feeds from scratch for every open creates unnecessary database pressure.</li>
+</ul>
+<h2>Precomputed Feed Solution</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-50.png" alt="Illustration: Precomputed Feed Solution"><figcaption>Illustration: Precomputed Feed Solution</figcaption></figure>
+<p>Precompute feeds before users open apps. Store feeds in Redis cache for fast access. When a new post appears, update only the relevant user&#x27;s feed list.</p>
+<ul>
+<li>Each user has a feed list in Redis holding post IDs, not full content.</li>
+<li>When a user posts, a background job adds the post to followers&#x27; feed lists in Redis.</li>
+<li>This avoids rebuilding entire feeds for every app open.</li>
+</ul>
+<h2>Two-Cache System for Performance</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-51.png" alt="Illustration: Two-Cache System for Performance"><figcaption>Illustration: Two-Cache System for Performance</figcaption></figure>
+<p>Use two caches: one for feed lists (post IDs) and another for post content. The feed cache holds which posts to show. The post cache stores actual content for quick retrieval.</p>
+<ul>
+<li>When a user opens the app, the system fetches post IDs from the feed cache.</li>
+<li>The post cache serves content for these IDs. Missing content is fetched from the database and cached.</li>
+<li>This system meets the 1-second feed load requirement.</li>
+</ul>
+<h2>Outbox Pattern for Post Delivery</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-52.png" alt="Illustration: Outbox Pattern for Post Delivery"><figcaption>Illustration: Outbox Pattern for Post Delivery</figcaption></figure>
+<p>We use an outbox pattern to safely deliver posts. We save the post content and a delivery note in one database transaction. This ensures both actions succeed or fail together.</p>
+<ul>
+<li>Save post content to posts table and a delivery note to outbox table within a single transaction.</li>
+<li>The outbox note includes the post ID and a pending flag.</li>
+<li>A background worker checks the outbox table every few seconds for pending notes.</li>
+</ul>
+<h2>Queue Processing and Delivery</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-53.png" alt="Illustration: Queue Processing and Delivery"><figcaption>Illustration: Queue Processing and Delivery</figcaption></figure>
+<p>The background worker moves pending notes to a queue. Once queued, it marks the note as done. The queue ticket specifies the post and author.</p>
+<ul>
+<li>Worker drops a ticket into the queue for each pending outbox note.</li>
+<li>After queueing, the outbox note flag changes from pending to done.</li>
+<li>Worker checks the follows table to find all followers of the post author.</li>
+</ul>
+<h2>Handling Duplicate Posts</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-54.png" alt="Illustration: Handling Duplicate Posts"><figcaption>Illustration: Handling Duplicate Posts</figcaption></figure>
+<p>Duplicate posts can occur if a worker crashes before acknowledging a queue ticket. We handle this by checking for existing post IDs before adding new ones.</p>
+<ul>
+<li>Worker skips adding a post if its ID already exists in a follower&#x27;s list.</li>
+<li>Occasional duplicates after refresh are acceptable per interview guidelines.</li>
+<li>This avoids wasted work on duplicate entries.</li>
+</ul>
+<h2>Hybrid Feed Approach</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-55.png" alt="Illustration: Hybrid Feed Approach"><figcaption>Illustration: Hybrid Feed Approach</figcaption></figure>
+<p>We use a hybrid approach to balance performance. Normal users (under 100,000 followers) get precomputed feeds. Celebrities (over 100,000 followers) use &#x27;fan out on read&#x27;.</p>
+<ul>
+<li>Normal accounts: Posts pushed to follower lists immediately.</li>
+<li>Celebrity accounts: Posts fetched directly when user opens the app.</li>
+<li>System merges precomputed posts with direct celebrity fetches for the feed.</li>
+</ul>
+<h2>Cache Requirements</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-56.png" alt="Illustration: Cache Requirements"><figcaption>Illustration: Cache Requirements</figcaption></figure>
+<p>We need two caches: one for follower lists and one for posts. Cache sizes depend on active users and post volume. Active users are defined as those who opened the app in the last 30 days (configurable).</p>
+<ul>
+<li>First cache: 40 GB for active users with 500 posts per list (4 KB per user).</li>
+<li>Second cache: ~30 GB for 30 million monthly posts (1 KB per post).</li>
+<li>Caches store only active users&#x27; data (last 30 days).</li>
+</ul>
+<h2>Database and Sharding</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-57.png" alt="Illustration: Database and Sharding"><figcaption>Illustration: Database and Sharding</figcaption></figure>
+<p>We use different databases for different data types. Posts use Cassandra for time-ordered data. User and follow data use relational databases.</p>
+<ul>
+<li>Posts are never updated or deleted, growing to 360 million yearly.</li>
+<li>Sharding splits posts across multiple database machines.</li>
+<li>Cassandra handles posts well due to their read-heavy, time-ordered nature.</li>
+</ul>
+<h2>Media Storage</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-58.png" alt="Illustration: Media Storage"><figcaption>Illustration: Media Storage</figcaption></figure>
+<p>Images and videos are stored separately from text posts. We don&#x27;t store media in the main database.</p>
+<ul>
+<li>Media uses dedicated storage systems (not specified in transcript).</li>
+<li>This avoids bloating the main database with large media files.</li>
+</ul>
+<h2>Storing Media Efficiently</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-59.png" alt="Illustration: Storing Media Efficiently"><figcaption>Illustration: Storing Media Efficiently</figcaption></figure>
+<p>Store image and video links in the database, not the media itself. This prevents database bloat and keeps the system lightweight.</p>
+<ul>
+<li>Database rows contain post text and media URLs only. The app loads media from object storage like S3.</li>
+<li>CDNs cache media for faster delivery. Users download images directly from the CDN, not the database.</li>
+<li>Post cache stores media URLs to avoid performance impact from heavy media files.</li>
+</ul>
+<h2>Handling Viral Posts</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-60.png" alt="Illustration: Handling Viral Posts"><figcaption>Illustration: Handling Viral Posts</figcaption></figure>
+<p>Viral posts strain single cache instances. Distribute reads across multiple cache copies to handle extreme traffic.</p>
+<ul>
+<li>A single cache cannot handle global reads for viral posts. Copy the post to multiple cache instances.</li>
+<li>This distributes load and prevents cache overload during viral events.</li>
+<li>Viral posts are served from multiple cache copies to maintain performance.</li>
+</ul>
+<h2>Celebrity Feed Optimization</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-61.png" alt="Illustration: Celebrity Feed Optimization"><figcaption>Illustration: Celebrity Feed Optimization</figcaption></figure>
+<p>Celebrities&#x27; posts are pulled from shared cache lists, not the database, to reduce load for all users.</p>
+<ul>
+<li>Store recent celebrity post IDs in a single shared cache list per celebrity. For example, one list for Leonel Messi.</li>
+<li>All followers of a celebrity access the same list, avoiding 800 separate database queries.</li>
+<li>This handles millions of followers without database overload during celebrity posts.</li>
+</ul>
+<h2>Feed Latency Improvements</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-62.png" alt="Illustration: Feed Latency Improvements"><figcaption>Illustration: Feed Latency Improvements</figcaption></figure>
+<p>Reduce feed latency by prioritizing active users during post distribution.</p>
+<ul>
+<li>Measure time between database save and follower list update to identify bottlenecks.</li>
+<li>Add worker nodes to process queue in parallel for faster post distribution.</li>
+<li>Prioritize active users: push posts to active followers first, then others in a second pass.</li>
+</ul>
+<h2>Implementing Ranked Feeds</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-63.png" alt="Illustration: Implementing Ranked Feeds"><figcaption>Illustration: Implementing Ranked Feeds</figcaption></figure>
+<p>Ranking requires real-time scoring at read time, not precomputation.</p>
+<ul>
+<li>Score candidates using current metrics: post age, likes, comments, and user interaction history.</li>
+<li>Score only top 500 candidates to keep processing fast and efficient.</li>
+<li>Ranks change frequently as likes and comments update, causing post positions to shift.</li>
+</ul>
+<h2>Lab Setup and Execution</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/oz5c88cO5P8/section-64.png" alt="Illustration: Lab Setup and Execution"><figcaption>Illustration: Lab Setup and Execution</figcaption></figure>
+<p>The lab offers a practical way to apply system design concepts. Try it immediately to gain hands-on experience.</p>
+<ul>
+<li>Go give the lab a try right away.</li>
+<li>No specific setup steps are provided in the transcript.</li>
+<li>Focus on using the lab rather than configuring tools.</li>
+</ul>
+</article>
