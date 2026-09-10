@@ -1,0 +1,42 @@
+<!doctype html><meta charset="utf-8">
+<article>
+<h1>Markov Chains Clearly Explained! Part - 1</h1>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/i3AkTO9HLXo/cover.png" alt="Cover illustration"><figcaption>Cover illustration</figcaption></figure>
+<h2>Markov Chains Explained</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/i3AkTO9HLXo/section-01.png" alt="Illustration: Markov Chains Explained"><figcaption>Illustration: Markov Chains Explained</figcaption></figure>
+<p>Markov chains model systems where future states depend only on the current state. They appear in statistics, biology, economics, physics, and machine learning. This video uses a restaurant example to explain the core concepts.</p>
+<ul>
+<li>A restaurant serves hamburgers, pizza, or hot dogs daily. Each day&#x27;s food depends only on the previous day&#x27;s choice.
+
+Example: 60% chance of pizza tomorrow if today is hamburger.</li>
+<li>Transitions are shown as weighted arrows between states. Self-pointing arrows represent staying in the same state.
+
+Example: 20% chance of hamburgers tomorrow if today is hamburger.</li>
+<li>All outgoing arrows from a state must sum to 1.0, as they represent probabilities.</li>
+</ul>
+<h2>Markov Property</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/i3AkTO9HLXo/section-02.png" alt="Illustration: Markov Property"><figcaption>Illustration: Markov Property</figcaption></figure>
+<p>The key Markov property states that future states depend only on the current state, not past history. This simplifies modeling complex systems.</p>
+<ul>
+<li>Example: If restaurant served pizza (day 1), hamburger (day 2), pizza (day 3), probability of hot dogs on day 4 is 0.7.
+
+This depends only on day 3, not earlier days.</li>
+<li>Mathematically: P(X_{n+1} = x | X_n = x_n, ..., X_1 = x_1) = P(X_{n+1} = x | X_n = x_n).
+
+This property makes real-world problem-solving more efficient.</li>
+</ul>
+<h2>Stationary Distribution</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/i3AkTO9HLXo/section-03.png" alt="Illustration: Stationary Distribution"><figcaption>Illustration: Stationary Distribution</figcaption></figure>
+<p>Over many steps, probabilities converge to a stationary distribution. This represents long-term state probabilities that remain constant over time.</p>
+<ul>
+<li>Simulated 100,000 steps: Hamburger 35%, Pizza 21%, Hot Dog 46%.
+
+Matches linear algebra solution.</li>
+<li>Stationary distribution is found by solving πA = π where A is the transition matrix.
+
+π must sum to 1.0 as it&#x27;s a probability distribution.</li>
+<li>This method confirms convergence and identifies unique stationary states.
+
+More than one stationary state would require multiple eigenvectors with eigenvalue 1.</li>
+</ul>
+</article>
