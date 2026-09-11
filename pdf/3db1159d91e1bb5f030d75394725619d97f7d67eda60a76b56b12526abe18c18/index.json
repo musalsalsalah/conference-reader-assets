@@ -1,0 +1,471 @@
+{
+  "source": "/Users/dineshc/dc-agents/to_be_processed/MLOps1/Building Machine Learning Powered Applications - Going from Idea to Product by Emmanuel Ameisen 2020.pdf",
+  "sha256": "3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18",
+  "images": [
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-000.png",
+      "name": "figure-000.png",
+      "page": 1
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-001.png",
+      "name": "figure-001.png",
+      "page": 2
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-002.png",
+      "name": "figure-002.png",
+      "page": 2
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-003.png",
+      "name": "figure-003.png",
+      "page": 16
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-004.png",
+      "name": "figure-004.png",
+      "page": 18
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-005.png",
+      "name": "figure-005.png",
+      "page": 23
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-006.png",
+      "name": "figure-006.png",
+      "page": 24
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-007.png",
+      "name": "figure-007.png",
+      "page": 25
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-008.png",
+      "name": "figure-008.png",
+      "page": 25
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-009.png",
+      "name": "figure-009.png",
+      "page": 26
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-010.png",
+      "name": "figure-010.png",
+      "page": 27
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-011.png",
+      "name": "figure-011.png",
+      "page": 28
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-012.png",
+      "name": "figure-012.png",
+      "page": 31
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-013.png",
+      "name": "figure-013.png",
+      "page": 33
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-014.png",
+      "name": "figure-014.png",
+      "page": 36
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-015.png",
+      "name": "figure-015.png",
+      "page": 46
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-016.png",
+      "name": "figure-016.png",
+      "page": 49
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-017.png",
+      "name": "figure-017.png",
+      "page": 55
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-018.png",
+      "name": "figure-018.png",
+      "page": 61
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-019.png",
+      "name": "figure-019.png",
+      "page": 63
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-020.png",
+      "name": "figure-020.png",
+      "page": 65
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-021.png",
+      "name": "figure-021.png",
+      "page": 77
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-022.png",
+      "name": "figure-022.png",
+      "page": 80
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-023.png",
+      "name": "figure-023.png",
+      "page": 92
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-024.png",
+      "name": "figure-024.png",
+      "page": 94
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-025.png",
+      "name": "figure-025.png",
+      "page": 95
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-026.png",
+      "name": "figure-026.png",
+      "page": 100
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-027.png",
+      "name": "figure-027.png",
+      "page": 101
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-028.png",
+      "name": "figure-028.png",
+      "page": 104
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-029.png",
+      "name": "figure-029.png",
+      "page": 105
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-030.png",
+      "name": "figure-030.png",
+      "page": 109
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-031.png",
+      "name": "figure-031.png",
+      "page": 111
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-032.png",
+      "name": "figure-032.png",
+      "page": 112
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-033.png",
+      "name": "figure-033.png",
+      "page": 113
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-034.png",
+      "name": "figure-034.png",
+      "page": 117
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-035.png",
+      "name": "figure-035.png",
+      "page": 122
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-036.png",
+      "name": "figure-036.png",
+      "page": 127
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-037.png",
+      "name": "figure-037.png",
+      "page": 130
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-038.png",
+      "name": "figure-038.png",
+      "page": 133
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-039.png",
+      "name": "figure-039.png",
+      "page": 135
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-040.png",
+      "name": "figure-040.png",
+      "page": 139
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-041.png",
+      "name": "figure-041.png",
+      "page": 143
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-042.png",
+      "name": "figure-042.png",
+      "page": 145
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-043.png",
+      "name": "figure-043.png",
+      "page": 147
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-044.png",
+      "name": "figure-044.png",
+      "page": 148
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-045.png",
+      "name": "figure-045.png",
+      "page": 153
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-046.png",
+      "name": "figure-046.png",
+      "page": 154
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-047.png",
+      "name": "figure-047.png",
+      "page": 157
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-048.png",
+      "name": "figure-048.png",
+      "page": 159
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-049.png",
+      "name": "figure-049.png",
+      "page": 162
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-050.png",
+      "name": "figure-050.png",
+      "page": 164
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-051.png",
+      "name": "figure-051.png",
+      "page": 167
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-052.png",
+      "name": "figure-052.png",
+      "page": 168
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-053.png",
+      "name": "figure-053.png",
+      "page": 170
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-054.png",
+      "name": "figure-054.png",
+      "page": 173
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-055.png",
+      "name": "figure-055.png",
+      "page": 178
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-056.png",
+      "name": "figure-056.png",
+      "page": 182
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-057.png",
+      "name": "figure-057.png",
+      "page": 183
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-058.png",
+      "name": "figure-058.png",
+      "page": 185
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-059.png",
+      "name": "figure-059.png",
+      "page": 187
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-060.png",
+      "name": "figure-060.png",
+      "page": 190
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-061.png",
+      "name": "figure-061.png",
+      "page": 196
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-062.png",
+      "name": "figure-062.png",
+      "page": 199
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-063.png",
+      "name": "figure-063.png",
+      "page": 202
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-064.png",
+      "name": "figure-064.png",
+      "page": 208
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-065.png",
+      "name": "figure-065.png",
+      "page": 216
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-066.png",
+      "name": "figure-066.png",
+      "page": 226
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-067.png",
+      "name": "figure-067.png",
+      "page": 228
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-068.png",
+      "name": "figure-068.png",
+      "page": 229
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-069.png",
+      "name": "figure-069.png",
+      "page": 231
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-070.png",
+      "name": "figure-070.png",
+      "page": 232
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-071.png",
+      "name": "figure-071.png",
+      "page": 235
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-072.png",
+      "name": "figure-072.png",
+      "page": 239
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-073.png",
+      "name": "figure-073.png",
+      "page": 241
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-074.png",
+      "name": "figure-074.png",
+      "page": 243
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-075.png",
+      "name": "figure-075.png",
+      "page": 245
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-076.png",
+      "name": "figure-076.png",
+      "page": 245
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-077.png",
+      "name": "figure-077.png",
+      "page": 249
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-078.png",
+      "name": "figure-078.png",
+      "page": 251
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-079.png",
+      "name": "figure-079.png",
+      "page": 252
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-080.png",
+      "name": "figure-080.png",
+      "page": 253
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-081.png",
+      "name": "figure-081.png",
+      "page": 254
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-082.png",
+      "name": "figure-082.png",
+      "page": 255
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-083.png",
+      "name": "figure-083.png",
+      "page": 256
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-084.png",
+      "name": "figure-084.png",
+      "page": 257
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-085.png",
+      "name": "figure-085.png",
+      "page": 263
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-086.png",
+      "name": "figure-086.png",
+      "page": 264
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-087.png",
+      "name": "figure-087.png",
+      "page": 265
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-088.png",
+      "name": "figure-088.png",
+      "page": 266
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-089.png",
+      "name": "figure-089.png",
+      "page": 268
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-090.png",
+      "name": "figure-090.png",
+      "page": 270
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-091.png",
+      "name": "figure-091.png",
+      "page": 271
+    },
+    {
+      "file": "/Users/dineshc/dc-agents/pdf-chapter-blog-agent/figures/3db1159d91e1bb5f030d75394725619d97f7d67eda60a76b56b12526abe18c18/figure-092.png",
+      "name": "figure-092.png",
+      "page": 274
+    }
+  ]
+}
