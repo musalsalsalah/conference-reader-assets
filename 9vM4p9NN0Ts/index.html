@@ -1,0 +1,338 @@
+<!doctype html><meta charset="utf-8">
+<article>
+<h1>Stanford CS229 I Machine Learning I Building Large Language Models (LLMs)</h1>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/9vM4p9NN0Ts/cover.png" alt="Cover illustration"><figcaption>Cover illustration</figcaption></figure>
+<h2>What Are LLMs?</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/9vM4p9NN0Ts/section-01.png" alt="Illustration: What Are LLMs?"><figcaption>Illustration: What Are LLMs?</figcaption></figure>
+<p>Large language models (LLMs) power modern chatbots like ChatGPT, Claude, Gemini, and Llama. They&#x27;re neural networks trained to model language probability distributions. The lecture focuses on practical training components beyond architecture.</p>
+<ul>
+<li>LLMs are neural networks that predict next tokens in sequences. They model language as probability distributions over tokens.</li>
+<li>Examples include ChatGPT (OpenAI), Claude (Anthropic), Gemini, and Llama. These are all LLM-based chatbots.</li>
+<li>The lecture emphasizes data, evaluation, and systems over architecture. Industry prioritizes these practical aspects.</li>
+</ul>
+<h2>Key Training Components</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/9vM4p9NN0Ts/section-02.png" alt="Illustration: Key Training Components"><figcaption>Illustration: Key Training Components</figcaption></figure>
+<p>Five key components define LLM training: architecture, training loss/algorithm, data, evaluation, and systems. Architecture is less critical than other factors in practice.</p>
+<ul>
+<li>Architecture: Neural network structure (e.g., transformers). Lecture skips this due to prior coverage and abundant online resources.</li>
+<li>Training loss: Cross-entropy loss maximizes text likelihood during training.</li>
+<li>Data: Models train on vast text corpora, like internet content.</li>
+<li>Evaluation: Measures progress toward LLM goals, not just accuracy.</li>
+<li>Systems: Hardware efficiency for large models, increasingly critical in practice.</li>
+</ul>
+<h2>Pretraining vs. Posttraining</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/9vM4p9NN0Ts/section-03.png" alt="Illustration: Pretraining vs. Posttraining"><figcaption>Illustration: Pretraining vs. Posttraining</figcaption></figure>
+<p>Pretraining models internet-scale language patterns. Posttraining adapts models into AI assistants (e.g., ChatGPT). Pretraining uses language modeling; posttraining uses alignment techniques.</p>
+<ul>
+<li>Pretraining: Classic approach (GPT-2, GPT-3). Models predict next tokens across vast text data.</li>
+<li>Posttraining: Recent trend (ChatGPT). Adapts pretrained models into conversational assistants.</li>
+<li>Pretraining focuses on language modeling tasks. Posttraining focuses on user interaction alignment.</li>
+</ul>
+<h2>Autoregressive Language Models</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/9vM4p9NN0Ts/section-04.png" alt="Illustration: Autoregressive Language Models"><figcaption>Illustration: Autoregressive Language Models</figcaption></figure>
+<p>Autoregressive models predict next tokens sequentially. They decompose language probability using chain rule. This approach has generation speed trade-offs.</p>
+<ul>
+<li>Task: Predict next token given previous context. Example: &#x27;she likely prefers&#x27; → &#x27;dogs&#x27;.</li>
+<li>Tokenization converts text to IDs. Vocabulary size equals model output dimensionality.</li>
+<li>Training uses cross-entropy loss. Maximizes log likelihood of training text.</li>
+<li>Inference samples from probability distribution. Training predicts most likely token.</li>
+</ul>
+<h2>Tokenization Importance</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/9vM4p9NN0Ts/section-05.png" alt="Illustration: Tokenization Importance"><figcaption>Illustration: Tokenization Importance</figcaption></figure>
+<p>Tokenizers convert text to manageable units. They handle typos, non-space languages, and vocabulary size. Tokenization is critical but often overlooked.</p>
+<ul>
+<li>Problem: Word-based tokenization fails with typos or languages like Thai without spaces.</li>
+<li>Solution: Use subword or character-level tokenization. Handles unknown words and new vocabulary.</li>
+<li>Vocabulary size determines model output dimension. Large vocabularies require careful management.</li>
+</ul>
+<h2>Tokenization Basics</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/9vM4p9NN0Ts/section-06.png" alt="Illustration: Tokenization Basics"><figcaption>Illustration: Tokenization Basics</figcaption></figure>
+<p>Tokenizers split text into smaller units to manage sequence length. Long sequences cause quadratic complexity in transformers. Tokenizers assign unique IDs to common subwords, keeping character-level tokens for typos or errors.</p>
+<ul>
+<li>Tokenizers merge common character pairs like &#x27;t&#x27; and &#x27;o&#x27; into new tokens. This reduces sequence length while preserving meaning.</li>
+<li>Each token has a unique ID. For example, &#x27;bank&#x27; (money) and &#x27;bank&#x27; (water) share a token but the model distinguishes meaning from context.</li>
+<li>Pre-tokenizers handle spaces and punctuation separately for efficiency. This avoids unnecessary merging across word boundaries.</li>
+</ul>
+<h2>Byte Pair Encoding</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/9vM4p9NN0Ts/section-07.png" alt="Illustration: Byte Pair Encoding"><figcaption>Illustration: Byte Pair Encoding</figcaption></figure>
+<p>Byte Pair Encoding (BPE) is a common tokenization method. It starts with character-level tokens and merges frequent pairs iteratively. This creates a compact vocabulary for large text corpora.</p>
+<ul>
+<li>BPE trains on massive text data. The tokenizer splits &#x27;tokenizer&#x27; into two tokens: &#x27;token&#x27; and &#x27;-izer&#x27;.</li>
+<li>The process merges the most frequent token pairs. In a small example, &#x27;to&#x27; appears three times and becomes a new token.</li>
+<li>BPE keeps smaller tokens like &#x27;t&#x27; and &#x27;o&#x27; even after merging. This ensures representation of typos or uncommon words.</li>
+</ul>
+<h2>Tokenization Challenges</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/9vM4p9NN0Ts/section-08.png" alt="Illustration: Tokenization Challenges"><figcaption>Illustration: Tokenization Challenges</figcaption></figure>
+<p>Tokenization affects model performance, especially with numbers and code. Current methods struggle with mathematical expressions and programming syntax.</p>
+<ul>
+<li>Numbers like &#x27;327&#x27; often get a single token. This prevents models from understanding numerical patterns like addition.</li>
+<li>GPT-4 improved code tokenization. It handles Python&#x27;s four-space indentation better than previous models.</li>
+<li>Future models might move away from tokenizers if architectures scale better with sequence length.</li>
+</ul>
+<h2>Model Evaluation</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/9vM4p9NN0Ts/section-09.png" alt="Illustration: Model Evaluation"><figcaption>Illustration: Model Evaluation</figcaption></figure>
+<p>Perplexity measures model uncertainty. It&#x27;s the exponentiated average loss per token. Lower perplexity means better prediction accuracy.</p>
+<ul>
+<li>Perplexity ranges from 1 (perfect prediction) to vocabulary size (random guessing). Modern models have dropped from ~70 to under 10 perplexity since 2017.</li>
+<li>Academic benchmarks like MMLU test model knowledge across domains. Questions cover topics like college physics and astronomy.</li>
+<li>MMLU evaluates by comparing likelihood of correct answers. Models must choose between multiple options for each question.</li>
+</ul>
+<h2>Evaluation Benchmarks</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/9vM4p9NN0Ts/section-10.png" alt="Illustration: Evaluation Benchmarks"><figcaption>Illustration: Evaluation Benchmarks</figcaption></figure>
+<p>HELM and Hugging Face&#x27;s leaderboard are common academic benchmarks. They aggregate results across multiple NLP tasks for comprehensive evaluation.</p>
+<ul>
+<li>HELM includes question-answering tasks with known correct answers. Models are scored on how likely they are to generate the right response.</li>
+<li>MMLU is the most common benchmark. It tests knowledge in fields like medicine, physics, and astronomy with multiple-choice questions.</li>
+<li>Perplexity is still used for model development but not for academic comparisons due to tokenizer dependency.</li>
+</ul>
+<h2>Evaluating Model Predictions</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/9vM4p9NN0Ts/section-11.png" alt="Illustration: Evaluating Model Predictions"><figcaption>Illustration: Evaluating Model Predictions</figcaption></figure>
+<p>To evaluate model responses, constrain output to specific options like A, B, C, D. This involves prompting the model and comparing only those tokens&#x27; probabilities without sampling.</p>
+<ul>
+<li>Prompt the model with choices A, B, C, D to limit response options.</li>
+<li>Compare the model&#x27;s probability distribution for these tokens directly.</li>
+<li>This method avoids generating full responses and focuses on the most likely token.</li>
+</ul>
+<h2>Perplexity and Tokenization</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/9vM4p9NN0Ts/section-12.png" alt="Illustration: Perplexity and Tokenization"><figcaption>Illustration: Perplexity and Tokenization</figcaption></figure>
+<p>Perplexity depends on tokenization choices. A larger vocabulary size increases the upper bound of perplexity, making direct comparisons between models with different tokenizers misleading.</p>
+<ul>
+<li>ChatGPT with 10,000 tokens has a lower perplexity upper bound than Gemini with 100,000 tokens.</li>
+<li>Tokenization design choices affect perplexity metrics, so they are not reliable for cross-model comparison.</li>
+<li>Perplexity ranges between 1 and the vocabulary size, making it sensitive to tokenizer differences.</li>
+</ul>
+<h2>Benchmarking Inconsistencies</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/9vM4p9NN0Ts/section-13.png" alt="Illustration: Benchmarking Inconsistencies"><figcaption>Illustration: Benchmarking Inconsistencies</figcaption></figure>
+<p>Benchmarking methods vary widely, causing inconsistent results. For example, Llama-65b showed 63.7% accuracy on HELM but 48.8% on another evaluation method.</p>
+<ul>
+<li>Different organizations use different evaluation methods for the same benchmark like MMLU.</li>
+<li>This leads to significant accuracy differences for the same model across evaluation methods.</li>
+<li>Prompting techniques also affect evaluation results, adding complexity.</li>
+</ul>
+<h2>Train-Test Contamination</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/9vM4p9NN0Ts/section-14.png" alt="Illustration: Train-Test Contamination"><figcaption>Illustration: Train-Test Contamination</figcaption></figure>
+<p>Train-test contamination occurs when test data appears in training data, skewing results. This is critical for academic research but less so for company development.</p>
+<ul>
+<li>Check if test set examples are more likely to generate in original order than shuffled order.</li>
+<li>Use web crawlers like Common Crawl to collect data, which includes 250 billion pages and 1 petabyte of data.</li>
+<li>Common Crawl data is often messy, with incomplete sentences and HTML formatting.</li>
+</ul>
+<h2>Data Processing Pipeline</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/9vM4p9NN0Ts/section-15.png" alt="Illustration: Data Processing Pipeline"><figcaption>Illustration: Data Processing Pipeline</figcaption></figure>
+<p>Raw internet data requires extensive processing before training. This includes text extraction, filtering, and de-duplication to create high-quality training data.</p>
+<ul>
+<li>Extract text from HTML, removing headers, footers, and boilerplate content.</li>
+<li>Filter out undesirable content like harmful material and PII using blacklists or small classifiers.</li>
+<li>De-duplicate content to remove repeated sections from forums or books.</li>
+<li>Apply heuristic filtering to remove low-quality documents based on token distribution or length.</li>
+</ul>
+<h2>Domain Weighting and Quality Focus</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/9vM4p9NN0Ts/section-16.png" alt="Illustration: Domain Weighting and Quality Focus"><figcaption>Illustration: Domain Weighting and Quality Focus</figcaption></figure>
+<p>After processing, data is classified into domains like books, code, or entertainment. Models are then weighted to emphasize high-quality or useful domains.</p>
+<ul>
+<li>Use Wikipedia links to identify high-quality websites for domain classification.</li>
+<li>Code and book domains are often upweighted to improve reasoning and language skills.</li>
+<li>Entertainment domains are typically downweighted to reduce irrelevant content.</li>
+<li>Final training often overfits on high-quality data like Wikipedia to refine model performance.</li>
+</ul>
+<h2>Data Collection Challenges</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/9vM4p9NN0Ts/section-17.png" alt="Illustration: Data Collection Challenges"><figcaption>Illustration: Data Collection Challenges</figcaption></figure>
+<p>Data collection is the most critical part of training large language models. Companies keep their data processing methods secret due to copyright risks and competitive advantages. Filtering internet data reduces it significantly before training.</p>
+<ul>
+<li>Initial data starts at 150 billion tokens (800GB), filtering to 15 trillion tokens for top models like Llama 3.</li>
+<li>Llama 2 used 2 trillion tokens while Llama 3 uses 15 trillion tokens, matching the largest academic benchmarks.</li>
+<li>Common Crawl requires 100-1,000x filtering to reach usable data volumes.</li>
+</ul>
+<h2>Data Processing Scale</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/9vM4p9NN0Ts/section-18.png" alt="Illustration: Data Processing Scale"><figcaption>Illustration: Data Processing Scale</figcaption></figure>
+<p>Data processing requires massive compute resources. A typical team might have 15 people dedicated to data work out of a 70-person team.</p>
+<ul>
+<li>Data processing needs more CPUs than model training requires, making it compute-intensive.</li>
+<li>Companies avoid discussing data methods due to copyright liability risks from using books or other protected content.</li>
+<li>Synthetic data generation and multimodal data are emerging approaches to address data scarcity.</li>
+</ul>
+<h2>Scaling Laws</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/9vM4p9NN0Ts/section-19.png" alt="Illustration: Scaling Laws"><figcaption>Illustration: Scaling Laws</figcaption></figure>
+<p>Scaling laws show that larger models and more data consistently improve performance without overfitting. This contradicts traditional machine learning teaching about overfitting.</p>
+<ul>
+<li>Test loss decreases predictably when increasing compute, data size, or model parameters on log scale.</li>
+<li>Scaling laws allow predicting performance for future models based on compute investment.</li>
+<li>No empirical evidence of performance plateauing yet, though theoretical limits may exist.</li>
+</ul>
+<h2>Practical Scaling Strategies</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/9vM4p9NN0Ts/section-20.png" alt="Illustration: Practical Scaling Strategies"><figcaption>Illustration: Practical Scaling Strategies</figcaption></figure>
+<p>Modern training pipelines use scaling laws to optimize resource allocation. Companies now predict model performance before full-scale training.</p>
+<ul>
+<li>Instead of training full models for short periods, teams test smaller models at different scales first.</li>
+<li>Scaling laws help compare architectures like transformers versus LSTMs before committing to full training.</li>
+<li>The slope and intercept of scaling curves determine which architecture performs better at scale.</li>
+</ul>
+<h2>Scaling Laws and Model Training</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/9vM4p9NN0Ts/section-21.png" alt="Illustration: Scaling Laws and Model Training"><figcaption>Illustration: Scaling Laws and Model Training</figcaption></figure>
+<p>Scaling laws show that architecture choices like activation functions have minimal impact compared to data quality and compute resources. Minor architectural changes only affect the intercept of scaling curves, not overall performance. Training longer or using better hardware often outweighs architectural tweaks.</p>
+<ul>
+<li>Data quality directly affects scaling law performance. Good data produces significantly better results than bad data, making it more important than architecture adjustments.</li>
+<li>Chinchilla found 20 tokens per parameter is optimal for training efficiency. This means adding one parameter requires 20 more training tokens to maintain optimal scaling.</li>
+<li>Inference costs influence real-world decisions. Production models use 150 tokens per parameter to balance training and inference costs, reducing long-term expenses.</li>
+</ul>
+<h2>Resource Allocation and Cost Analysis</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/9vM4p9NN0Ts/section-22.png" alt="Illustration: Resource Allocation and Cost Analysis"><figcaption>Illustration: Resource Allocation and Cost Analysis</figcaption></figure>
+<p>Optimal resource allocation depends on compute constraints. Scaling laws help determine whether to increase model size or data volume for best results. Real-world costs include training, inference, and environmental impact.</p>
+<ul>
+<li>Llama3 400B used 15.6 trillion tokens and 405 billion parameters. Its training required approximately 3.8e25 flops, just below the 1e26 threshold for regulatory scrutiny.</li>
+<li>Training cost estimates: $52 million for GPU rental (26 million hours at $2/hour) plus $25 million in salaries for 50 employees, totaling ~$75 million.</li>
+<li>Environmental impact: ~4,000 tons of CO2 equivalent, equivalent to 2,000 round-trip flights from JFK to London. This is significant but not yet a major concern for current models.</li>
+</ul>
+<h2>Alignment and Post-Training</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/9vM4p9NN0Ts/section-23.png" alt="Illustration: Alignment and Post-Training"><figcaption>Illustration: Alignment and Post-Training</figcaption></figure>
+<p>Post-training transforms language models into helpful assistants. Pure language models often fail to provide direct answers, instead continuing internet-style content patterns. Alignment ensures models follow user instructions and avoid toxic outputs.</p>
+<ul>
+<li>Without alignment, a pure language model like GPT-3 would respond to &#x27;explain the moon landing to a six-year-old&#x27; with &#x27;explain the theory of gravity to a six-year-old&#x27;—continuing patterns rather than answering directly.</li>
+<li>Alignment goals include making models follow user instructions and avoid harmful content. This transforms models from language predictors into helpful AI assistants.</li>
+<li>OpenAI&#x27;s approach with ChatGPT demonstrates successful alignment, making models responsive to user needs rather than continuing text patterns.</li>
+</ul>
+<h2>Supervised Fine Tuning (SFT)</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/9vM4p9NN0Ts/section-24.png" alt="Illustration: Supervised Fine Tuning (SFT)"><figcaption>Illustration: Supervised Fine Tuning (SFT)</figcaption></figure>
+<p>SFT aligns models by fine-tuning pretrained LLMs on human-collected question-answer pairs. This approach uses minimal data since the model already knows language structure from internet-scale pretraining.</p>
+<ul>
+<li>Human data is expensive to collect but essential for desired outputs. Example: A human provided a correct answer about monopsony for a question about market structures.</li>
+<li>Pretraining provides language knowledge. SFT specializes the model for specific user types without adding new facts.</li>
+<li>SFT uses the same language modeling loss as pretraining. It&#x27;s called &#x27;supervised&#x27; because it uses human-labeled answers.</li>
+</ul>
+<h2>Synthetic Data Generation</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/9vM4p9NN0Ts/section-25.png" alt="Illustration: Synthetic Data Generation"><figcaption>Illustration: Synthetic Data Generation</figcaption></figure>
+<p>Synthetic data speeds up development by using LLMs to generate question-answer pairs from human examples. This reduces human effort but requires careful handling.</p>
+<ul>
+<li>Alpaca used 175 human questions to generate 52,000 synthetic pairs via text-davinci-003. Fine-tuned on Llama 7B, it replicated ChatGPT&#x27;s success.</li>
+<li>LLM-generated data remains effective even after multiple generations. Example: Algorithm definitions from synthetic data matched human quality.</li>
+<li>Over-reliance on synthetic data risks bootstrapping the same distribution. Human edits on LLM outputs improve quality without full human input.</li>
+</ul>
+<h2>Data Efficiency Limits</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/9vM4p9NN0Ts/section-26.png" alt="Illustration: Data Efficiency Limits"><figcaption>Illustration: Data Efficiency Limits</figcaption></figure>
+<p>SFT requires surprisingly little data. Scaling from 2,000 to 32,000 examples shows diminishing returns, as models already know most content from pretraining.</p>
+<ul>
+<li>LIMA study shows 2,000 high-quality examples suffice. More data doesn&#x27;t significantly improve performance.</li>
+<li>SFT teaches formatting, not new knowledge. The model specializes for specific user types seen during pretraining.</li>
+<li>Human-in-the-loop editing (e.g., fixing LLM outputs) adds value faster than full human data collection.</li>
+</ul>
+<h2>RLHF for Better Alignment</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/9vM4p9NN0Ts/section-27.png" alt="Illustration: RLHF for Better Alignment"><figcaption>Illustration: RLHF for Better Alignment</figcaption></figure>
+<p>RLHF addresses SFT limitations by maximizing human preferences instead of cloning human answers. This avoids hallucinations and improves output quality.</p>
+<ul>
+<li>SFT can cause hallucinations when models mimic plausible but incorrect references. Example: A human writes a reference that the model didn&#x27;t see during pretraining.</li>
+<li>RLHF uses model-generated answers for comparison. Humans rank which response better matches their preferences.</li>
+<li>RLHF avoids human data bottlenecks. Humans only evaluate model outputs, not create full answers.</li>
+</ul>
+<h2>Reinforcement Learning for LLM Fine-Tuning</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/9vM4p9NN0Ts/section-28.png" alt="Illustration: Reinforcement Learning for LLM Fine-Tuning"><figcaption>Illustration: Reinforcement Learning for LLM Fine-Tuning</figcaption></figure>
+<p>LLMs improve responses using reinforcement learning based on human preferences. Two main approaches exist: binary rewards and reward models. Both methods refine outputs using human feedback.</p>
+<ul>
+<li>Binary rewards compare model outputs against a baseline. Humans label which response is better with +1 or -1. This sparse feedback provides limited detail about response quality.</li>
+<li>Reward models classify preference strength between two outputs. They output continuous values instead of binary labels, offering more nuanced feedback for training.</li>
+<li>Reward models use a Bradley-Terry model approach. They generate logits representing preference strength, allowing models to learn how much better one response is than another.</li>
+</ul>
+<h2>PPO Implementation Challenges</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/9vM4p9NN0Ts/section-29.png" alt="Illustration: PPO Implementation Challenges"><figcaption>Illustration: PPO Implementation Challenges</figcaption></figure>
+<p>PPO (Proximal Policy Optimization) was used in early ChatGPT development. It involves supervised fine-tuning, reward model training, and iterative PPO updates.</p>
+<ul>
+<li>PPO requires collecting human preferences, training a reward model with maximum likelihood, and applying reinforcement learning. This creates a complex pipeline with many implementation challenges.</li>
+<li>PPO implementation involves technical complexities like rollouts, outer loops, and clipping. These make it difficult to implement correctly in practice.</li>
+<li>PPO changes LLM training. Instead of maximizing likelihood, models optimize for preferred responses, losing meaningful likelihood scores for text.</li>
+</ul>
+<h2>DPO: Simplified Alternative to PPO</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/9vM4p9NN0Ts/section-30.png" alt="Illustration: DPO: Simplified Alternative to PPO"><figcaption>Illustration: DPO: Simplified Alternative to PPO</figcaption></figure>
+<p>DPO (Direct Preference Optimization) simplifies training by directly maximizing preferred responses without reinforcement learning. It&#x27;s mathematically equivalent to PPO under certain assumptions.</p>
+<ul>
+<li>DPO uses maximum likelihood to maximize probability of preferred responses and minimize probability of less preferred ones. This eliminates reward models and reinforcement learning steps.</li>
+<li>DPO is simpler to implement than PPO. It requires only one training step instead of multiple complex steps involving reward models and reinforcement learning.</li>
+<li>DPO performs as well as PPO in practice. It&#x27;s now the standard approach in both open-source and industry settings for preference-based LLM training.</li>
+</ul>
+<h2>Data Collection for Preference Training</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/9vM4p9NN0Ts/section-31.png" alt="Illustration: Data Collection for Preference Training"><figcaption>Illustration: Data Collection for Preference Training</figcaption></figure>
+<p>Collecting human preference data is complex and requires detailed guidelines. Labelers must evaluate subtle differences between model responses.</p>
+<ul>
+<li>Labeling examples require careful comparison of similar responses. For instance, two descriptions of self-driving cars might both seem correct but have subtle differences in detail.</li>
+<li>Human labeling is time-consuming and difficult. The process requires significant effort to ensure consistent preference data.</li>
+<li>Preference data collection is essential for both PPO and DPO training. It provides the human feedback that guides model improvement.</li>
+</ul>
+<h2>Human Data Challenges</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/9vM4p9NN0Ts/section-32.png" alt="Illustration: Human Data Challenges"><figcaption>Illustration: Human Data Challenges</figcaption></figure>
+<p>Human data collection for LLM training faces multiple issues. Humans often prioritize superficial features like output length over correctness, leading to biased preferences in RLHF that cause models to generate longer responses.</p>
+<ul>
+<li>Humans agree with themselves only around 66% of the time on binary labeling tasks. Experts discussing labeling for three hours achieved 67-68% accuracy.</li>
+<li>Crowdsourcing ethics are problematic. Annotators often receive low pay and handle toxic content while labeling.</li>
+<li>Human labeling costs approximately $300 per 1,000 examples on platforms like Mechanical Turk.</li>
+</ul>
+<h2>LLM-Generated Preferences</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/9vM4p9NN0Ts/section-33.png" alt="Illustration: LLM-Generated Preferences"><figcaption>Illustration: LLM-Generated Preferences</figcaption></figure>
+<p>Replacing human preferences with LLM-generated ones improves efficiency and consistency. Models show higher agreement with human preferences than humans do themselves due to less variance.</p>
+<ul>
+<li>Models cost about 50x less than humans for labeling and achieve better agreement with human preferences than humans do.</li>
+<li>Models have less variance than humans but may introduce bias. This approach is now standard in open-source communities.</li>
+<li>Industry uses hybrid approaches combining both human and LLM preferences for RLHF data collection.</li>
+</ul>
+<h2>Model Evaluation Methods</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/9vM4p9NN0Ts/section-34.png" alt="Illustration: Model Evaluation Methods"><figcaption>Illustration: Model Evaluation Methods</figcaption></figure>
+<p>Traditional metrics like validation loss and perplexity don&#x27;t work for aligned LLMs. Evaluation requires human-like preference comparisons between model outputs.</p>
+<ul>
+<li>ChatBotArena uses real users to compare model outputs. It&#x27;s the most trusted benchmark but expensive at scale.</li>
+<li>AlpacaEval uses LLMs to evaluate models. It correlates 98% with human evaluations and costs under $10 for 3 minutes of processing.</li>
+<li>LLMs prefer longer outputs, which humans also favor. This bias can be controlled through causal inference techniques.</li>
+</ul>
+<h2>Evaluation Biases</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/9vM4p9NN0Ts/section-35.png" alt="Illustration: Evaluation Biases"><figcaption>Illustration: Evaluation Biases</figcaption></figure>
+<p>LLM evaluations suffer from spurious correlations. Output length significantly impacts win rates, requiring bias correction.</p>
+<ul>
+<li>When prompted to be verbose, models achieve a 64.4% win rate versus 20% when concise.</li>
+<li>Without correction, verbose outputs gain unfair advantage in evaluations.</li>
+<li>Causal inference tools control for length, reducing its impact on evaluation results.</li>
+</ul>
+<h2>Training Data Scale</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/9vM4p9NN0Ts/section-36.png" alt="Illustration: Training Data Scale"><figcaption>Illustration: Training Data Scale</figcaption></figure>
+<p>RLHF requires significantly more data than SFT. This data volume influences model weights despite being small compared to pretraining.</p>
+<ul>
+<li>SFT typically uses 5,000-50,000 examples. RLHF uses around 1 million examples.</li>
+<li>Pretraining involves 15 trillion tokens, making RLHF data volume relatively small.</li>
+<li>Industry fine-tunes all weights, while open-source may use techniques like LoRA to modify specific weights.</li>
+</ul>
+<h2>Model Initialization and Fine-Tuning</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/9vM4p9NN0Ts/section-37.png" alt="Illustration: Model Initialization and Fine-Tuning"><figcaption>Illustration: Model Initialization and Fine-Tuning</figcaption></figure>
+<p>Pretraining serves as model initialization, not a separate data phase. After pretraining, fine-tuning uses only post-training data. The model&#x27;s weights are the key, not prior training data.</p>
+<ul>
+<li>Pretraining initializes weights. Fine-tuning starts from this point.</li>
+<li>Overfitting a single sentence is possible with large learning rates and sufficient training time.</li>
+<li>The number of fine-tuning epochs isn&#x27;t critical. Effective learning rate matters most.</li>
+</ul>
+<h2>GPU Architecture and Optimization</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/9vM4p9NN0Ts/section-38.png" alt="Illustration: GPU Architecture and Optimization"><figcaption>Illustration: GPU Architecture and Optimization</figcaption></figure>
+<p>GPUs optimize for throughput, not latency. They excel at parallel matrix operations but face memory and communication bottlenecks.</p>
+<ul>
+<li>GPUs use streaming multiprocessors for high-throughput parallelization.</li>
+<li>Matrix multiplication runs 10x faster on GPUs than other operations.</li>
+<li>Compute improves faster than memory, causing GPU idle time without optimization.</li>
+</ul>
+<h2>Model FLOP Utilization</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/9vM4p9NN0Ts/section-39.png" alt="Illustration: Model FLOP Utilization"><figcaption>Illustration: Model FLOP Utilization</figcaption></figure>
+<p>Model FLOP utilization measures GPU efficiency. 50% utilization is excellent; industry examples like Llama achieve 45%.</p>
+<ul>
+<li>Low precision reduces data transfer size and speeds up communication.</li>
+<li>16-bit precision is standard for computation. Weights remain in 32-bit storage.</li>
+<li>Automatic mixed precision uses 32-bit weights but 16-bit computation for speed.</li>
+</ul>
+<h2>Operator Fusion</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/9vM4p9NN0Ts/section-40.png" alt="Illustration: Operator Fusion"><figcaption>Illustration: Operator Fusion</figcaption></figure>
+<p>Operator fusion reduces communication overhead by combining operations. PyTorch&#x27;s torch.compile can double speed by fusing kernels.</p>
+<ul>
+<li>Naive code moves data between memory and GPU for each operation.</li>
+<li>Fused kernels communicate once, perform all operations, then return data.</li>
+<li>torch.compile rewrites PyTorch code to C++/CUDA for efficiency.</li>
+</ul>
+<h2>Additional LLM Topics</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/9vM4p9NN0Ts/section-41.png" alt="Illustration: Additional LLM Topics"><figcaption>Illustration: Additional LLM Topics</figcaption></figure>
+<p>LLM development involves many aspects beyond training. Key areas include UI design, multi-modality, data scarcity, and legal considerations.</p>
+<ul>
+<li>CS224N provides historical context for LLMs and related topics.</li>
+<li>CS324 covers in-depth LLM content including training techniques discussed here.</li>
+<li>CS336 teaches building LLMs from scratch with significant workload.</li>
+</ul>
+</article>
