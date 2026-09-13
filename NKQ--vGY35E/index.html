@@ -1,0 +1,175 @@
+<!doctype html><meta charset="utf-8">
+<article>
+<h1>Failure Is Always An Option • Dylan Beattie • GOTO 2023</h1>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/NKQ--vGY35E/cover.png" alt="Cover illustration"><figcaption>Cover illustration</figcaption></figure>
+<h2>The Apollo 13 Myth</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/NKQ--vGY35E/section-01.png" alt="Illustration: The Apollo 13 Myth"><figcaption>Illustration: The Apollo 13 Myth</figcaption></figure>
+<p>The Apollo 13 mission&#x27;s famous line &#x27;failure is not an option&#x27; was coined by NASA&#x27;s Gene Kranz in a 1995 interview. It was later used in the movie Apollo 13 and became his autobiography title. The phrase misrepresents Apollo&#x27;s actual engineering approach.</p>
+<ul>
+<li>Apollo 13&#x27;s Saturn V rocket had 6 million components with 99.9% reliability. This meant 6,000 potential failures per successful mission.</li>
+<li>Margaret Hamilton&#x27;s team developed Apollo&#x27;s software with a systems engineering approach. They integrated software, people, and hardware from the start.</li>
+<li>The Apollo program&#x27;s definition of &#x27;done&#x27; included landing on the moon, returning safely, and completing quarantine procedures.</li>
+</ul>
+<h2>Apollo 12&#x27;s Lightning Crisis</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/NKQ--vGY35E/section-02.png" alt="Illustration: Apollo 12&#x27;s Lightning Crisis"><figcaption>Illustration: Apollo 12&#x27;s Lightning Crisis</figcaption></figure>
+<p>Apollo 12 faced a lightning strike during launch. Engineers used a backup system to restore power and continue the mission.</p>
+<ul>
+<li>John Aaron identified that lightning had disabled the dashboard&#x27;s signal conditioning equipment.</li>
+<li>Astronauts switched the SCCE to &#x27;auxiliary&#x27; mode, restoring all systems and allowing the mission to continue.</li>
+<li>This demonstrated Apollo&#x27;s built-in redundancy for every critical system.</li>
+</ul>
+<h2>Apollo 13&#x27;s Redundancy</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/NKQ--vGY35E/section-03.png" alt="Illustration: Apollo 13&#x27;s Redundancy"><figcaption>Illustration: Apollo 13&#x27;s Redundancy</figcaption></figure>
+<p>Apollo 13&#x27;s success relied on multiple redundancies. The mission&#x27;s objective shifted from landing on the moon to safely returning astronauts.</p>
+<ul>
+<li>The Saturn V rocket had five engines. One failed to ignite at launch, but four remained operational.</li>
+<li>Backup crews existed for every mission. Apollo 13 had a backup crew ready if needed.</li>
+<li>The launch escape system could have saved astronauts if the rocket exploded on the pad.</li>
+</ul>
+<h2>The Space Shuttle Era</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/NKQ--vGY35E/section-04.png" alt="Illustration: The Space Shuttle Era"><figcaption>Illustration: The Space Shuttle Era</figcaption></figure>
+<p>NASA&#x27;s Space Transportation System (space shuttle) used validated Apollo technology alongside new innovations like fly-by-wire systems.</p>
+<ul>
+<li>Computers can fail in three ways: immediate error messages, timeouts, or deceptive outputs like fake news sites.</li>
+<li>The shuttle&#x27;s guidance system required validation against trusted sources to detect errors.</li>
+<li>Apollo&#x27;s success was followed by public and congressional fatigue over costs and limited returns.</li>
+</ul>
+<h2>Systemic News Failure</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/NKQ--vGY35E/section-05.png" alt="Illustration: Systemic News Failure"><figcaption>Illustration: Systemic News Failure</figcaption></figure>
+<p>When multiple devices show conflicting online news, it indicates a systemic failure. Trusting digital sources becomes unreliable when devices display inconsistent results.</p>
+<ul>
+<li>Devices may show different news like &#x27;SpongeBob invades Luxembourg&#x27; on a laptop, &#x27;Mexico one Eurovision&#x27; on a phone, or &#x27;NASA&#x27;s found Brexit opportunities on Mars&#x27; on a tablet.</li>
+<li>This simultaneous failure across devices means digital news systems cannot be trusted for accurate information.</li>
+<li>For reliable world news during such failures, use offline sources like newspapers or TV.</li>
+</ul>
+<h2>Space Shuttle Computer Redundancy</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/NKQ--vGY35E/section-06.png" alt="Illustration: Space Shuttle Computer Redundancy"><figcaption>Illustration: Space Shuttle Computer Redundancy</figcaption></figure>
+<p>The space shuttle used five IBM AP101 mainframes for critical systems. Four ran identical software for fault detection, while the fifth used a different implementation to handle rare failures.</p>
+<ul>
+<li>Four identical computers provided redundancy; if one failed, the system could isolate it.</li>
+<li>The fifth computer ran different software from a separate supplier to prevent identical failures.</li>
+<li>If all four failed simultaneously, the fifth system would likely still function correctly.</li>
+</ul>
+<h2>Risk Management in Space Shuttle Design</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/NKQ--vGY35E/section-07.png" alt="Illustration: Risk Management in Space Shuttle Design"><figcaption>Illustration: Risk Management in Space Shuttle Design</figcaption></figure>
+<p>The shuttle program included a sixth spare computer for in-orbit replacement, but it was removed after early missions due to cost concerns.</p>
+<ul>
+<li>Spare computers were removed to save payload weight and cost, despite their safety value.</li>
+<li>Removing spares reflects human tendency to underestimate risk when failures don&#x27;t occur.</li>
+<li>This mirrors how people overestimate risks of unfamiliar activities like flying versus familiar ones like driving.</li>
+</ul>
+<h2>Bathtub Curve in System Reliability</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/NKQ--vGY35E/section-08.png" alt="Illustration: Bathtub Curve in System Reliability"><figcaption>Illustration: Bathtub Curve in System Reliability</figcaption></figure>
+<p>Engineered systems follow a bathtub curve: high failure rates when new, stable middle phase, and increased failures at end-of-life.</p>
+<ul>
+<li>Early failures in systems like Windows Vista are fixed over time, leading to more stable versions like Windows 7.</li>
+<li>Late-life failures occur when maintenance shifts to new systems, neglecting existing ones.</li>
+<li>Berlin Brandenburg Airport delayed opening until 2020 due to neglecting the old system while focusing on the new one.</li>
+</ul>
+<h2>Challenger Disaster Risk Factors</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/NKQ--vGY35E/section-09.png" alt="Illustration: Challenger Disaster Risk Factors"><figcaption>Illustration: Challenger Disaster Risk Factors</figcaption></figure>
+<p>The Challenger disaster resulted from gradually decreasing safety standards for launch temperatures, despite known risks.</p>
+<ul>
+<li>NASA managers accepted lower temperature thresholds after previous successful launches at higher temperatures.</li>
+<li>Richard Feynman&#x27;s investigation identified mismanagement and risk attitude as primary causes.</li>
+<li>The certification criteria used decreasing strictness, accepting repeated risks as safe.</li>
+</ul>
+<h2>Seat Belts and Cloud Systems</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/NKQ--vGY35E/section-10.png" alt="Illustration: Seat Belts and Cloud Systems"><figcaption>Illustration: Seat Belts and Cloud Systems</figcaption></figure>
+<p>Seat belts aren&#x27;t for driving safely but for crashes. Similarly, cloud systems aren&#x27;t built for constant uptime but for recovery when failures occur. Modern cloud platforms let us scale instantly, reducing the need for complex tolerance engineering.</p>
+<ul>
+<li>Cloud services like AWS let you spin up servers in seconds. This is like having fire extinguishers delivered in 30 seconds when smoke appears.</li>
+<li>Systems can handle regional outages with distributed load balancers and active-active replication. North America going offline might not stop service.</li>
+<li>The biggest cloud failure point is often the MasterCard limit on an Amazon account. If payment fails, all services stop immediately.</li>
+</ul>
+<h2>Post Office Horizon System Failure</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/NKQ--vGY35E/section-11.png" alt="Illustration: Post Office Horizon System Failure"><figcaption>Illustration: Post Office Horizon System Failure</figcaption></figure>
+<p>The Horizon system cost &#x27;something like 10 billion pounds&#x27; and was rolled out across 10,000 post offices after a pilot on half a dozen branches. Discrepancies between cash and system records led to wrongful criminal charges against staff.</p>
+<ul>
+<li>Postmasters were accused of stealing money when the system reported missing funds. Many remortgaged homes or cashed pensions to pay back alleged shortages.</li>
+<li>Fujitsu claimed Horizon was &#x27;fundamentally sound&#x27; despite known issues. The Post Office ignored evidence of system errors for years.</li>
+<li>A judge called the Post Office&#x27;s defense &#x27;the 21st century equivalent of maintaining the Earth is flat.&#x27; Convictions were overturned after 20 years.</li>
+</ul>
+<h2>User Experience and System Design</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/NKQ--vGY35E/section-12.png" alt="Illustration: User Experience and System Design"><figcaption>Illustration: User Experience and System Design</figcaption></figure>
+<p>Systems must account for real-world constraints. Two-factor authentication fails for users without mobile signal, and users find creative workarounds for system limitations.</p>
+<ul>
+<li>A user in a Victorian house with no mobile signal had to run to a hill to get a two-factor code. Developers wouldn&#x27;t call this a software bug.</li>
+<li>Microscope companies prevented email attachments to avoid espionage. Field engineers used hotmail drafts to send firmware updates without sending emails.</li>
+<li>Users will find creative solutions within constraints. A system&#x27;s success depends on how well it handles these unexpected workarounds.</li>
+</ul>
+<h2>Accepting System Failures</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/NKQ--vGY35E/section-13.png" alt="Illustration: Accepting System Failures"><figcaption>Illustration: Accepting System Failures</figcaption></figure>
+<p>No system survives contact with reality. Developers must accept that failures will happen and focus on recovery, not blame. The Horizon case shows the cost of ignoring potential errors.</p>
+<ul>
+<li>When users report system errors, check logs first. Don&#x27;t assume the user made a mistake. The Post Office wrongly blamed staff for system errors.</li>
+<li>Tesla&#x27;s autopilot struggles with traffic lights in unexpected locations. Real-world surprises will always challenge software design.</li>
+<li>Engineers should design for failure, not assume everything will work perfectly. The Horizon case cost lives and livelihoods due to arrogance.</li>
+</ul>
+<h2>Dog Detection to Art</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/NKQ--vGY35E/section-14.png" alt="Illustration: Dog Detection to Art"><figcaption>Illustration: Dog Detection to Art</figcaption></figure>
+<p>A neural network trained to identify dogs can be repurposed by reversing its input-output flow, creating unexpected art through &#x27;deep dreaming.&#x27;</p>
+<ul>
+<li>The model initially claimed &#x27;no dogs&#x27; in a venue photo, failing to detect features humans recognize.</li>
+<li>Reversing the model turns it into a &#x27;dog amplifier,&#x27; enhancing dog-like features in any image.</li>
+<li>This process generated &#x27;deep dreaming,&#x27; a new art form from user experimentation with the model.</li>
+</ul>
+<h2>Coca-Cola to Vodacom</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/NKQ--vGY35E/section-15.png" alt="Illustration: Coca-Cola to Vodacom"><figcaption>Illustration: Coca-Cola to Vodacom</figcaption></figure>
+<p>In Africa, Coca-Cola&#x27;s roadside presence evolved into Vodacom&#x27;s mobile infrastructure, showing how communication systems adapted to local needs.</p>
+<ul>
+<li>Coca-Cola&#x27;s red-and-white huts appeared every 40-50 minutes along African roads in the 1980s.</li>
+<li>By the 2000s, these same huts still existed but displayed Vodacom branding instead of Coca-Cola.</li>
+<li>Vodacom&#x27;s success relied on mobile networks covering large areas with minimal cable, unlike traditional telecoms.</li>
+</ul>
+<h2>Mobile Infrastructure Challenges</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/NKQ--vGY35E/section-16.png" alt="Illustration: Mobile Infrastructure Challenges"><figcaption>Illustration: Mobile Infrastructure Challenges</figcaption></figure>
+<p>Traditional telecoms failed in Africa due to low population density, unbanked populations, and unstable governments.</p>
+<ul>
+<li>Successful telecoms require population density, people who can pay for services, and stable governments.</li>
+<li>Most of Africa had sparse populations, unbanked people living on cash, and high corruption risks.</li>
+<li>Copper cable theft was common, making physical infrastructure unreliable in rural areas.</li>
+</ul>
+<h2>Mobile Money Revolution</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/NKQ--vGY35E/section-17.png" alt="Illustration: Mobile Money Revolution"><figcaption>Illustration: Mobile Money Revolution</figcaption></figure>
+<p>Users created a digital currency system using phone credit before formal banking existed, which Vodacom and Safaricom later adopted.</p>
+<ul>
+<li>Prepaid phone credit became a currency transfer method: users sent top-up codes instead of physical cash.</li>
+<li>This system avoided banks entirely, using phone credit as intrinsic currency for money transfers.</li>
+<li>Vodacom initially saw this as a &#x27;disaster&#x27; since users weren&#x27;t making calls but texting credit transfers.</li>
+<li>They later turned it into M-Pesa, Kenya&#x27;s de facto banking system serving a quarter-million families.</li>
+</ul>
+<h2>User Ingenuity Over Design</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/NKQ--vGY35E/section-18.png" alt="Illustration: User Ingenuity Over Design"><figcaption>Illustration: User Ingenuity Over Design</figcaption></figure>
+<p>Kenyan users redefined mobile phone usage, creating a digital economy that Vodacom and Safaricom adapted into M-Pesa.</p>
+<ul>
+<li>Users initially used phone credit transfers for money, not calls, prompting Vodacom to adapt their service.</li>
+<li>M-Pesa became Kenya&#x27;s primary banking system, helping a quarter-million families escape poverty.</li>
+<li>Romania rejected M-Pesa in 2014, preferring Visa, while Afghanistan adopted it for police salaries.</li>
+<li>Afghan police discovered 60% of &#x27;officers&#x27; on payroll didn&#x27;t exist, showing M-Pesa&#x27;s impact on accountability.</li>
+</ul>
+<h2>Failure as an Inevitable Option</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/NKQ--vGY35E/section-19.png" alt="Illustration: Failure as an Inevitable Option"><figcaption>Illustration: Failure as an Inevitable Option</figcaption></figure>
+<p>The speaker emphasizes that failure is always an option, not something to be avoided. This perspective shifts focus from preventing failure to planning for it. It&#x27;s a natural part of system behavior.</p>
+<ul>
+<li>Systems should fail safely and predictably. This prevents cascading failures that could disrupt entire services.</li>
+<li>Failure modes must be documented and understood. Teams need clear visibility into how systems fail under stress.</li>
+<li>Automated recovery mechanisms should trigger on failure detection. This reduces manual intervention during incidents.</li>
+</ul>
+<h2>Practical Implementation</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/NKQ--vGY35E/section-20.png" alt="Illustration: Practical Implementation"><figcaption>Illustration: Practical Implementation</figcaption></figure>
+<p>Implementing failure as an option requires technical practices like circuit breakers and retries. These maintain service availability during partial failures.</p>
+<ul>
+<li>Circuit breakers prevent overloading downstream services. They halt requests when failure rates exceed thresholds.</li>
+<li>Retry mechanisms should include exponential backoff. This avoids overwhelming systems during transient failures.</li>
+<li>Fallbacks provide alternative functionality when primary services fail. This maintains user experience during outages.</li>
+</ul>
+<h2>Cultural Shift</h2>
+<figure><img src="https://musalsalsalah.github.io/conference-reader-assets/NKQ--vGY35E/section-21.png" alt="Illustration: Cultural Shift"><figcaption>Illustration: Cultural Shift</figcaption></figure>
+<p>Adopting failure as a natural part of system behavior requires cultural change. Teams must shift from blame to learning after incidents. This builds a more resilient organizational mindset.</p>
+<ul>
+<li>Post-mortems should focus on systemic causes, not individual blame. This encourages transparency and continuous improvement.</li>
+<li>Teams should regularly simulate failures. Chaos engineering exercises help teams understand failure patterns.</li>
+<li>Failure metrics should be tracked alongside success metrics. This provides balanced insights into system health.</li>
+</ul>
+</article>
